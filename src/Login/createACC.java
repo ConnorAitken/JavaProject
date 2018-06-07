@@ -269,7 +269,7 @@ public class createACC extends javax.swing.JFrame {
         
         if(username.equals("") | password.equals("") | firstname.equals("") | lastname.equals("")) {
             JOptionPane.showMessageDialog(null, "Please Fill All Fields");
-        }
+        } else {
         
         if(password.equals(rePass)) {
          
@@ -293,13 +293,14 @@ public class createACC extends javax.swing.JFrame {
             setVisible(false);
             dispose();
        } else {
-                JOptionPane.showMessageDialog(null, "Username & Password Invalid");
+                JOptionPane.showMessageDialog(null, "Invalid ");
             }
        } catch (Exception e){
             
        }
        } else {
             JOptionPane.showMessageDialog(null, "Passwords Do Not Match");
+        }
         }
         
      

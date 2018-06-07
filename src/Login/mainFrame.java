@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import Login.createACC;
+import caseWorker.contentsCaseWorker;
         
 /**
  *
@@ -188,12 +189,26 @@ public class mainFrame extends javax.swing.JFrame {
                 Info.setVisible(true);
             }
             else {
-                JOptionPane.showMessageDialog(null, "Username & Password Invalid");
+
+                String query = "Select * From usercaseworker Where username=? And password=?";
+                try {
+                    PreparedStatement ps2 = conn.prepareStatement(query);
+                    ps2.setString(1, usernameTextField.getText());
+                    ps2.setString(2, PasswordField1.getText());
+                    ResultSet rs2 = ps2.executeQuery();
+                    if (rs2.next()) {
+                        this.dispose();
+                        Welcome_2 Frame = new Welcome_2();
+                        Frame.setVisible(true);
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "Username & Password Invalid");
+                    }
+                }
+                catch (Exception e){}
             }
         }
-        catch (Exception e){
-            
-        }
+        catch (Exception e){}
     }//GEN-LAST:event_SignInButtonActionPerformed
 
     private void createAccButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccButtonActionPerformed

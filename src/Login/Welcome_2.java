@@ -5,22 +5,18 @@
  */
 package Login;
 
-import java.awt.event.MouseEvent;
-import Client.contentsClient;
-import java.awt.event.MouseListener;
-
+import caseWorker.contentsCaseWorker;
 /**
  *
- * @author Connor
+ * @author 2105247816
  */
-public class Welcome_1 extends javax.swing.JFrame {
-    
-    /**
-     * Creates new form Welcome_1
-     */
-    public Welcome_1() {
-        initComponents();
+public class Welcome_2 extends javax.swing.JFrame {
 
+    /**
+     * Creates new form Welcome_2
+     */
+    public Welcome_2() {
+        initComponents();
     }
 
     /**
@@ -40,6 +36,7 @@ public class Welcome_1 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(50, 50, 50));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1024, 576));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -65,7 +62,7 @@ public class Welcome_1 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(427, 427, 427)
                         .addComponent(jLabel2)))
-                .addContainerGap(459, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,7 +71,7 @@ public class Welcome_1 extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(100, 100, 100)
                 .addComponent(jLabel2)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -93,10 +90,10 @@ public class Welcome_1 extends javax.swing.JFrame {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        contentsClient frame = new contentsClient();
-            frame.setVisible(true);
-            setVisible(false);
-            dispose();
+        contentsCaseWorker frame = new contentsCaseWorker();
+        frame.setVisible(true);
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
@@ -116,20 +113,20 @@ public class Welcome_1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Welcome_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Welcome_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Welcome_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Welcome_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Welcome_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Welcome_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Welcome_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Welcome_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Welcome_1().setVisible(true);
+                new Welcome_2().setVisible(true);
             }
         });
     }

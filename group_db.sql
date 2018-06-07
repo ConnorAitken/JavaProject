@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2018 at 05:23 AM
+-- Generation Time: Jun 07, 2018 at 06:53 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -21,6 +21,57 @@ SET time_zone = "+00:00";
 --
 -- Database: `group_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `caseworkerdata`
+--
+
+CREATE TABLE `caseworkerdata` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clientcoursedata`
+--
+
+CREATE TABLE `clientcoursedata` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clientquestions`
+--
+
+CREATE TABLE `clientquestions` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usercaseworker`
+--
+
+CREATE TABLE `usercaseworker` (
+  `id` int(11) NOT NULL,
+  `username` varchar(25) DEFAULT NULL,
+  `password` varchar(25) DEFAULT NULL,
+  `firstname` varchar(25) DEFAULT NULL,
+  `lastname` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `usercaseworker`
+--
+
+INSERT INTO `usercaseworker` (`id`, `username`, `password`, `firstname`, `lastname`) VALUES
+(1, 'jsmith', 'pass', 'John', 'Smith');
 
 -- --------------------------------------------------------
 
@@ -43,12 +94,35 @@ CREATE TABLE `userclient` (
 
 INSERT INTO `userclient` (`id`, `username`, `password`, `firstname`, `lastname`, `age`) VALUES
 (1, 'admin', 'pass', 'Admin', 'Guy', 100),
-(2, 'connor', 'pass', 'Connor', 'Aitken', 18),
-(3, 'test', 'test', '', 'test', 7);
+(2, 'connor', 'pass', 'Connor', 'Aitken', 18);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `caseworkerdata`
+--
+ALTER TABLE `caseworkerdata`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `clientcoursedata`
+--
+ALTER TABLE `clientcoursedata`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `clientquestions`
+--
+ALTER TABLE `clientquestions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `usercaseworker`
+--
+ALTER TABLE `usercaseworker`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `userclient`
@@ -59,6 +133,30 @@ ALTER TABLE `userclient`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `caseworkerdata`
+--
+ALTER TABLE `caseworkerdata`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `clientcoursedata`
+--
+ALTER TABLE `clientcoursedata`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `clientquestions`
+--
+ALTER TABLE `clientquestions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `usercaseworker`
+--
+ALTER TABLE `usercaseworker`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `userclient`
