@@ -53,21 +53,26 @@ public class mainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(640, 480));
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(50, 50, 50));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        welcomeLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        welcomeLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        welcomeLabel1.setForeground(new java.awt.Color(255, 255, 255));
         welcomeLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         welcomeLabel1.setText("Welcome If You Have An Account Please Sign In Otherwise");
         welcomeLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        welcomeLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        welcomeLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        welcomeLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        welcomeLabel2.setForeground(new java.awt.Color(255, 255, 255));
         welcomeLabel2.setText("Please Create An Account");
 
-        usernameLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        usernameLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
         usernameLabel.setText("Username:");
 
-        passwordLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        passwordLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        passwordLabel.setForeground(new java.awt.Color(255, 255, 255));
         passwordLabel.setText("Password:");
 
         createAccButton.setText("Create Account");
@@ -95,47 +100,46 @@ public class mainFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(welcomeLabel1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(passwordLabel)
-                                        .addGap(42, 42, 42)
-                                        .addComponent(PasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(usernameLabel)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(usernameTextField))
-                                    .addComponent(createAccButton))
-                                .addGap(170, 170, 170))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(201, 201, 201)
-                        .addComponent(welcomeLabel2)))
-                .addGap(68, 68, 68))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(exitButton)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(173, 173, 173)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(SignInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(191, 191, 191))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(exitButton)
-                        .addContainerGap())))
+                    .addComponent(welcomeLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(usernameLabel)
+                                .addComponent(passwordLabel))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(createAccButton)
+                                .addGap(4, 4, 4)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(usernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(PasswordField1)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(216, 216, 216)
+                                .addComponent(SignInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 141, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(welcomeLabel2)
+                .addGap(354, 354, 354))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(33, 33, 33)
                 .addComponent(welcomeLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(welcomeLabel2)
-                .addGap(81, 81, 81)
+                .addGap(105, 105, 105)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel)
                     .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,7 +151,7 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SignInButton)
                     .addComponent(createAccButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addComponent(exitButton)
                 .addContainerGap())
         );
@@ -172,7 +176,7 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
         
-        String sql = "Select * From user Where username=? And password=?";
+        String sql = "Select * From userclient Where username=? And password=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, usernameTextField.getText());
