@@ -6,7 +6,13 @@
 package Client;
 
 import Client.updateClientData;
+import Client.industryAndCourseDetails;
+import Client.overallProgress;
+import java.awt.Color;
 
+import java.awt.FlowLayout;
+import java.awt.event.MouseEvent;
+import javax.swing.event.MouseInputAdapter;
 /**
  *
  * @author 2105247816
@@ -17,9 +23,9 @@ public class contentsClient extends javax.swing.JFrame {
      * Creates new form contentsClient
      */
     public contentsClient() {
-        initComponents();
+        initComponents();  
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,21 +37,18 @@ public class contentsClient extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         updateInfoLabel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        progressLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        courseDataLabel = new javax.swing.JLabel();
+        exitButton = new javax.swing.JButton();
 
         jLabel1.setText("Client Contents");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(50, 50, 50));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 175, 202), 5));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Menu");
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 175, 202), 4));
 
         updateInfoLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         updateInfoLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -57,57 +60,107 @@ public class contentsClient extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 updateInfoLabelMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                updateInfoLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                updateInfoLabelMouseExited(evt);
+            }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Industry and Course Details");
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel4.setPreferredSize(new java.awt.Dimension(400, 35));
+        progressLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        progressLabel.setForeground(new java.awt.Color(255, 255, 255));
+        progressLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        progressLabel.setText("Progress Tracker");
+        progressLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        progressLabel.setPreferredSize(new java.awt.Dimension(400, 35));
+        progressLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                progressLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                progressLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                progressLabelMouseExited(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Progress Tracker");
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel5.setPreferredSize(new java.awt.Dimension(400, 35));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Menu");
+
+        courseDataLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        courseDataLabel.setForeground(new java.awt.Color(255, 255, 255));
+        courseDataLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        courseDataLabel.setText("Industry and Course Details");
+        courseDataLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        courseDataLabel.setPreferredSize(new java.awt.Dimension(400, 35));
+        courseDataLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                courseDataLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                courseDataLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                courseDataLabelMouseExited(evt);
+            }
+        });
+
+        exitButton.setText("Exit");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(481, 481, 481)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(337, Short.MAX_VALUE)
+                .addGap(303, 303, 303)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(progressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(courseDataLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updateInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(277, 277, 277))
+                .addContainerGap(293, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(456, 456, 456))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(exitButton)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(56, 56, 56)
                 .addComponent(jLabel2)
-                .addGap(63, 63, 63)
+                .addGap(65, 65, 65)
                 .addComponent(updateInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(courseDataLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(progressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
+                .addComponent(exitButton)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,6 +177,68 @@ public class contentsClient extends javax.swing.JFrame {
         setVisible(false);
         dispose();
     }//GEN-LAST:event_updateInfoLabelMouseClicked
+
+    private void courseDataLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_courseDataLabelMouseClicked
+        // TODO add your handling code here:
+        industryAndCourseDetails frame = new industryAndCourseDetails();
+        frame.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_courseDataLabelMouseClicked
+
+    private void progressLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_progressLabelMouseClicked
+        // TODO add your handling code here:
+        overallProgress frame = new overallProgress();
+        frame.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_progressLabelMouseClicked
+
+    private void updateInfoLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateInfoLabelMouseEntered
+        // TODO add your handling code here:
+        updateInfoLabel.setForeground(new Color(1, 175, 202));
+        String underline = "<html><u> Update Your Information</u></html>";
+        updateInfoLabel.setText(underline);
+    }//GEN-LAST:event_updateInfoLabelMouseEntered
+
+    private void updateInfoLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateInfoLabelMouseExited
+        // TODO add your handling code here:
+        updateInfoLabel.setForeground(Color.WHITE);
+        String underline = "Update Your Information";
+        updateInfoLabel.setText(underline);
+    }//GEN-LAST:event_updateInfoLabelMouseExited
+
+    private void courseDataLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_courseDataLabelMouseEntered
+        // TODO add your handling code here:
+        courseDataLabel.setForeground(new Color(1, 175, 202));
+        String underline2 = "<html><u> Industry and Course Details</u></html>";
+        courseDataLabel.setText(underline2);
+    }//GEN-LAST:event_courseDataLabelMouseEntered
+
+    private void courseDataLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_courseDataLabelMouseExited
+        // TODO add your handling code here:
+        courseDataLabel.setForeground(Color.WHITE);
+        String underline2 = "Industry and Course Details";
+        courseDataLabel.setText(underline2);
+    }//GEN-LAST:event_courseDataLabelMouseExited
+
+    private void progressLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_progressLabelMouseEntered
+        // TODO add your handling code here:
+        progressLabel.setForeground(new Color(1, 175, 202));
+        String underline3 = "<html><u> Progress Tracker</u></html>";
+        progressLabel.setText(underline3);
+    }//GEN-LAST:event_progressLabelMouseEntered
+
+    private void progressLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_progressLabelMouseExited
+        // TODO add your handling code here:
+        progressLabel.setForeground(Color.WHITE);
+        String underline3 = "Progress Tracker";
+        progressLabel.setText(underline3);
+    }//GEN-LAST:event_progressLabelMouseExited
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,11 +276,12 @@ public class contentsClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel courseDataLabel;
+    private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel progressLabel;
     private javax.swing.JLabel updateInfoLabel;
     // End of variables declaration//GEN-END:variables
 }

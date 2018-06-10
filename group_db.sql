@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2018 at 06:53 AM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Jun 10, 2018 at 10:51 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -49,7 +49,12 @@ CREATE TABLE `clientcoursedata` (
 --
 
 CREATE TABLE `clientquestions` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `firstname` varchar(25) DEFAULT NULL,
+  `lastname` varchar(25) DEFAULT NULL,
+  `client_email` varchar(50) DEFAULT NULL,
+  `guardian_name` varchar(25) NOT NULL DEFAULT 'N/A',
+  `guardian_email` varchar(50) NOT NULL DEFAULT 'N/A'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -63,15 +68,17 @@ CREATE TABLE `usercaseworker` (
   `username` varchar(25) DEFAULT NULL,
   `password` varchar(25) DEFAULT NULL,
   `firstname` varchar(25) DEFAULT NULL,
-  `lastname` varchar(25) DEFAULT NULL
+  `lastname` varchar(25) DEFAULT NULL,
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `usercaseworker`
 --
 
-INSERT INTO `usercaseworker` (`id`, `username`, `password`, `firstname`, `lastname`) VALUES
-(1, 'jsmith', 'pass', 'John', 'Smith');
+INSERT INTO `usercaseworker` (`id`, `username`, `password`, `firstname`, `lastname`, `email`) VALUES
+(1, 'jsmith', 'pass', 'John', 'Smith', 'jsmith@email.com'),
+(2, 'jdoe', 'pass', 'Jane', 'Doe', 'jdoe@email.com');
 
 -- --------------------------------------------------------
 
@@ -156,13 +163,13 @@ ALTER TABLE `clientquestions`
 -- AUTO_INCREMENT for table `usercaseworker`
 --
 ALTER TABLE `usercaseworker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `userclient`
 --
 ALTER TABLE `userclient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
