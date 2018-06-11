@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2018 at 10:51 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Jun 11, 2018 at 03:55 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -49,12 +49,84 @@ CREATE TABLE `clientcoursedata` (
 --
 
 CREATE TABLE `clientquestions` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clientusage`
+--
+
+CREATE TABLE `clientusage` (
   `id` int(11) NOT NULL,
+  `date` date DEFAULT NULL,
   `firstname` varchar(25) DEFAULT NULL,
-  `lastname` varchar(25) DEFAULT NULL,
-  `client_email` varchar(50) DEFAULT NULL,
-  `guardian_name` varchar(25) NOT NULL DEFAULT 'N/A',
-  `guardian_email` varchar(50) NOT NULL DEFAULT 'N/A'
+  `lastname` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clientusage`
+--
+
+INSERT INTO `clientusage` (`id`, `date`, `firstname`, `lastname`) VALUES
+(3, '2018-06-11', 'Connor', 'Aitken'),
+(4, '2018-06-11', 'Admin', 'Guy'),
+(5, '2018-06-11', 'Connor', 'Aitken');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `idCourses` varchar(15) NOT NULL,
+  `Title` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses_has_courses`
+--
+
+CREATE TABLE `courses_has_courses` (
+  `Courses_idCourses` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `industry`
+--
+
+CREATE TABLE `industry` (
+  `id` int(11) NOT NULL,
+  `Title` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job`
+--
+
+CREATE TABLE `job` (
+  `Id` int(11) NOT NULL,
+  `Title` varchar(45) NOT NULL,
+  `Industry_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `units`
+--
+
+CREATE TABLE `units` (
+  `idUnits` varchar(15) NOT NULL,
+  `Title` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -68,17 +140,15 @@ CREATE TABLE `usercaseworker` (
   `username` varchar(25) DEFAULT NULL,
   `password` varchar(25) DEFAULT NULL,
   `firstname` varchar(25) DEFAULT NULL,
-  `lastname` varchar(25) DEFAULT NULL,
-  `email` varchar(50) NOT NULL
+  `lastname` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `usercaseworker`
 --
 
-INSERT INTO `usercaseworker` (`id`, `username`, `password`, `firstname`, `lastname`, `email`) VALUES
-(1, 'jsmith', 'pass', 'John', 'Smith', 'jsmith@email.com'),
-(2, 'jdoe', 'pass', 'Jane', 'Doe', 'jdoe@email.com');
+INSERT INTO `usercaseworker` (`id`, `username`, `password`, `firstname`, `lastname`) VALUES
+(1, 'jsmith', 'pass', 'John', 'Smith');
 
 -- --------------------------------------------------------
 
@@ -126,6 +196,38 @@ ALTER TABLE `clientquestions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `clientusage`
+--
+ALTER TABLE `clientusage`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`idCourses`);
+
+--
+-- Indexes for table `courses_has_courses`
+--
+ALTER TABLE `courses_has_courses`
+  ADD PRIMARY KEY (`Courses_idCourses`),
+  ADD KEY `fk_Courses_has_Courses_Courses1_idx` (`Courses_idCourses`);
+
+--
+-- Indexes for table `industry`
+--
+ALTER TABLE `industry`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `job`
+--
+ALTER TABLE `job`
+  ADD PRIMARY KEY (`Id`,`Industry_id`),
+  ADD KEY `fk_Job_Industry1_idx` (`Industry_id`);
+
+--
 -- Indexes for table `usercaseworker`
 --
 ALTER TABLE `usercaseworker`
@@ -160,16 +262,50 @@ ALTER TABLE `clientquestions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `clientusage`
+--
+ALTER TABLE `clientusage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `industry`
+--
+ALTER TABLE `industry`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `job`
+--
+ALTER TABLE `job`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `usercaseworker`
 --
 ALTER TABLE `usercaseworker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `userclient`
 --
 ALTER TABLE `userclient`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `courses_has_courses`
+--
+ALTER TABLE `courses_has_courses`
+  ADD CONSTRAINT `fk_Courses_has_Courses_Courses1` FOREIGN KEY (`Courses_idCourses`) REFERENCES `courses` (`idCourses`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `job`
+--
+ALTER TABLE `job`
+  ADD CONSTRAINT `fk_Job_Industry1` FOREIGN KEY (`Industry_id`) REFERENCES `industry` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
