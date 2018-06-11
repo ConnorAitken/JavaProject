@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2018 at 03:55 AM
+-- Generation Time: Jun 12, 2018 at 01:28 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -39,18 +39,18 @@ CREATE TABLE `caseworkerdata` (
 --
 
 CREATE TABLE `clientcoursedata` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `industry` varchar(50) NOT NULL,
+  `course` varchar(50) NOT NULL,
+  `clientID` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `clientquestions`
+-- Dumping data for table `clientcoursedata`
 --
 
-CREATE TABLE `clientquestions` (
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `clientcoursedata` (`id`, `industry`, `course`, `clientID`) VALUES
+(1, 'IT', 'Software', 2);
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,11 @@ CREATE TABLE `clientusage` (
 INSERT INTO `clientusage` (`id`, `date`, `firstname`, `lastname`) VALUES
 (3, '2018-06-11', 'Connor', 'Aitken'),
 (4, '2018-06-11', 'Admin', 'Guy'),
-(5, '2018-06-11', 'Connor', 'Aitken');
+(5, '2018-06-11', 'Connor', 'Aitken'),
+(6, '2018-06-11', 'Admin', 'Guy'),
+(7, '2018-06-11', 'Admin', 'Guy'),
+(8, '2018-06-11', 'Admin', 'Guy'),
+(9, '2018-06-11', 'Admin', 'Guy');
 
 -- --------------------------------------------------------
 
@@ -121,6 +125,18 @@ CREATE TABLE `job` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `temp`
+--
+
+CREATE TABLE `temp` (
+  `id` int(11) NOT NULL,
+  `username` varchar(25) DEFAULT NULL,
+  `password` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `units`
 --
 
@@ -140,15 +156,16 @@ CREATE TABLE `usercaseworker` (
   `username` varchar(25) DEFAULT NULL,
   `password` varchar(25) DEFAULT NULL,
   `firstname` varchar(25) DEFAULT NULL,
-  `lastname` varchar(25) DEFAULT NULL
+  `lastname` varchar(25) DEFAULT NULL,
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `usercaseworker`
 --
 
-INSERT INTO `usercaseworker` (`id`, `username`, `password`, `firstname`, `lastname`) VALUES
-(1, 'jsmith', 'pass', 'John', 'Smith');
+INSERT INTO `usercaseworker` (`id`, `username`, `password`, `firstname`, `lastname`, `email`) VALUES
+(1, 'jsmith', 'pass', 'John', 'Smith', 'jsmith@email.com');
 
 -- --------------------------------------------------------
 
@@ -162,16 +179,21 @@ CREATE TABLE `userclient` (
   `password` varchar(100) DEFAULT NULL,
   `firstname` varchar(100) DEFAULT NULL,
   `lastname` varchar(100) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL
+  `age` int(11) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
+  `contactNo` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `guardianName` varchar(50) NOT NULL,
+  `guardinContact` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `userclient`
 --
 
-INSERT INTO `userclient` (`id`, `username`, `password`, `firstname`, `lastname`, `age`) VALUES
-(1, 'admin', 'pass', 'Admin', 'Guy', 100),
-(2, 'connor', 'pass', 'Connor', 'Aitken', 18);
+INSERT INTO `userclient` (`id`, `username`, `password`, `firstname`, `lastname`, `age`, `email`, `contactNo`, `address`, `guardianName`, `guardinContact`) VALUES
+(1, 'admin', 'pass', 'Admin', 'Guy', 100, '', '', '', '', ''),
+(2, 'connor', 'pass', 'Connor', 'Aitken', 18, 'email@email.com', '0412345678', '10 Address Drive', 'Mary', '0412364678');
 
 --
 -- Indexes for dumped tables
@@ -187,12 +209,6 @@ ALTER TABLE `caseworkerdata`
 -- Indexes for table `clientcoursedata`
 --
 ALTER TABLE `clientcoursedata`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `clientquestions`
---
-ALTER TABLE `clientquestions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -228,6 +244,18 @@ ALTER TABLE `job`
   ADD KEY `fk_Job_Industry1_idx` (`Industry_id`);
 
 --
+-- Indexes for table `temp`
+--
+ALTER TABLE `temp`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `units`
+--
+ALTER TABLE `units`
+  ADD PRIMARY KEY (`idUnits`);
+
+--
 -- Indexes for table `usercaseworker`
 --
 ALTER TABLE `usercaseworker`
@@ -253,19 +281,13 @@ ALTER TABLE `caseworkerdata`
 -- AUTO_INCREMENT for table `clientcoursedata`
 --
 ALTER TABLE `clientcoursedata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `clientquestions`
---
-ALTER TABLE `clientquestions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `clientusage`
 --
 ALTER TABLE `clientusage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `industry`
@@ -278,6 +300,12 @@ ALTER TABLE `industry`
 --
 ALTER TABLE `job`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `temp`
+--
+ALTER TABLE `temp`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `usercaseworker`
