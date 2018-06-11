@@ -8,17 +8,20 @@ package Client;
 import Client.updateClientData;
 import Client.industryAndCourseDetails;
 import Client.overallProgress;
+import Login.DBConnection;
 import java.awt.Color;
 
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.swing.event.MouseInputAdapter;
 /**
  *
  * @author 2105247816
  */
 public class contentsClient extends javax.swing.JFrame {
-
+    Connection conn = new DBConnection().connect();
     /**
      * Creates new form contentsClient
      */
@@ -237,6 +240,12 @@ public class contentsClient extends javax.swing.JFrame {
     }//GEN-LAST:event_progressLabelMouseExited
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        String delete = "TRUNCATE TABLE temp";
+        try {
+        PreparedStatement psDel = conn.prepareStatement(delete);
+        psDel.executeUpdate();
+        } catch (Exception e){}
+        
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
 

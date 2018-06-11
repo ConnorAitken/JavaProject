@@ -354,6 +354,12 @@ public class updateCaseWorkerDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        String delete = "TRUNCATE TABLE temp";
+        try {
+        PreparedStatement psDel = conn.prepareStatement(delete);
+        psDel.executeUpdate();
+        } catch (Exception e){}
+        
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
 

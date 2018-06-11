@@ -288,6 +288,16 @@ public class createACC extends javax.swing.JFrame {
         if (ps.executeUpdate() > 0) {
             JOptionPane.showMessageDialog(null, "New User Added. Please Continue With Process");
             
+            String sqlquery = "INSERT INTO temp(username, password) VALUES(?, ?)";
+                    try {
+                        PreparedStatement pst = conn.prepareStatement(sqlquery);
+                        pst.setString(1, userTextField.getText());
+                        pst.setString(2, PasswordField.getText());
+
+                        pst.executeUpdate();
+                    }
+                    catch (Exception e){}
+                    
             newClientQuestions frame = new newClientQuestions();
             frame.setVisible(true);
             setVisible(false);

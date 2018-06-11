@@ -28,6 +28,9 @@ public class mainFrame extends javax.swing.JFrame {
     public mainFrame() {
         initComponents();
         setLocationRelativeTo(this);
+        
+        lastnameTextField.setVisible(false);
+        firstnameTextField.setVisible(false);
     }
 
 
@@ -50,6 +53,8 @@ public class mainFrame extends javax.swing.JFrame {
         SignInButton = new javax.swing.JButton();
         PasswordField1 = new javax.swing.JPasswordField();
         exitButton = new javax.swing.JButton();
+        firstnameTextField = new javax.swing.JTextField();
+        lastnameTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(640, 480));
@@ -132,6 +137,12 @@ public class mainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(welcomeLabel2)
                 .addGap(354, 354, 354))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +163,11 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SignInButton)
                     .addComponent(createAccButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addComponent(exitButton)
                 .addContainerGap())
         );
@@ -172,6 +187,11 @@ public class mainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        String delete = "DELETE * FROM temp";
+        try {
+        PreparedStatement psDel = conn.prepareStatement(delete);
+        psDel.executeQuery();
+        } catch (Exception e){}
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
 
@@ -184,6 +204,23 @@ public class mainFrame extends javax.swing.JFrame {
             ps.setString(2, PasswordField1.getText());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+                String FN = rs.getString("firstname");
+                firstnameTextField.setText(FN);
+                String LN = rs.getString("lastname");
+                lastnameTextField.setText(LN);
+                
+                String INSERT_RECORD = "INSERT INTO clientusage(date, firstname, lastname) VALUES(?, ?, ?)";
+                    try {
+                        PreparedStatement pstmt = conn.prepareStatement(INSERT_RECORD);
+                        java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
+                        pstmt.setDate(1, sqlDate);
+                        pstmt.setString(2, firstnameTextField.getText());
+                        pstmt.setString(3, lastnameTextField.getText());
+
+                        pstmt.executeUpdate();
+                    }
+                    catch (Exception e){}
+                
                 this.dispose();
                 Welcome_1 Info = new Welcome_1();
                 Info.setVisible(true);
@@ -209,6 +246,18 @@ public class mainFrame extends javax.swing.JFrame {
             }
         }
         catch (Exception e){}
+        
+         String sqlquery = "INSERT INTO temp(username, password) VALUES(?, ?)";
+                    try {
+                        PreparedStatement pst = conn.prepareStatement(sqlquery);
+                        pst.setString(1, usernameTextField.getText());
+                        pst.setString(2, PasswordField1.getText());
+
+                        pst.executeUpdate();
+                    }
+                    catch (Exception e){}
+        
+
     }//GEN-LAST:event_SignInButtonActionPerformed
 
     private void createAccButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccButtonActionPerformed
@@ -261,7 +310,9 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JButton SignInButton;
     private javax.swing.JButton createAccButton;
     private javax.swing.JButton exitButton;
+    private javax.swing.JTextField firstnameTextField;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField lastnameTextField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
