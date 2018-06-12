@@ -384,8 +384,9 @@ public class newClientQuestions extends javax.swing.JFrame {
     }//GEN-LAST:event_firstNameTextFieldActionPerformed
 
     private void SubmitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButton1ActionPerformed
-        // TODO add your handling code here:
-String firstname = firstNameTextField.getText();
+        // TODO add your handling code here:    
+         
+        String firstname = firstNameTextField.getText();
         String lastname =  lastNameTextField.getText();
         String email = emailTextField.getText();
         String contactNO = contactNoTextField.getText();
@@ -449,6 +450,12 @@ String firstname = firstNameTextField.getText();
                     catch (Exception e){} 
                 }
             } catch (Exception e){}
+            
+             
+            
+            
+       
+
             
         }       
         
