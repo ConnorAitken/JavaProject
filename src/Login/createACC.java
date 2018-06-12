@@ -35,7 +35,6 @@ public class createACC extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        exitButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
@@ -53,13 +52,6 @@ public class createACC extends javax.swing.JFrame {
         passLabel1 = new javax.swing.JLabel();
         PasswordField = new javax.swing.JPasswordField();
         rePasswordField = new javax.swing.JPasswordField();
-
-        exitButton.setText("Exit");
-        exitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -249,10 +241,6 @@ public class createACC extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitButtonActionPerformed
-
     private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButton1ActionPerformed
@@ -284,7 +272,8 @@ public class createACC extends javax.swing.JFrame {
             ps.setString(3, firstname);
             ps.setString(4, lastname);
             ps.setInt(5, age);
-
+            ps.executeUpdate();
+            
         if (ps.executeUpdate() > 0) {
             JOptionPane.showMessageDialog(null, "New User Added. Please Continue With Process");
             
@@ -367,7 +356,6 @@ public class createACC extends javax.swing.JFrame {
     private javax.swing.JTextField ageTextField;
     private javax.swing.JButton backButton;
     private javax.swing.JButton createButton;
-    private javax.swing.JButton exitButton;
     private javax.swing.JButton exitButton1;
     private javax.swing.JLabel firstNLabel;
     private javax.swing.JTextField firstNameTextField;

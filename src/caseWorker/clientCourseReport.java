@@ -29,6 +29,21 @@ public class clientCourseReport extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        userTextField = new javax.swing.JTextField();
+        passTextField = new javax.swing.JTextField();
+        searchButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        firstnameTextField = new javax.swing.JTextField();
+        lastnameTextField = new javax.swing.JTextField();
+        lastSignInTextField = new javax.swing.JTextField();
+        noOfSignInTextField = new javax.swing.JTextField();
+        userLabel = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
+        lnLabel = new javax.swing.JLabel();
+        fnLabel = new javax.swing.JLabel();
+        exitButton1 = new javax.swing.JButton();
+        studentLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,6 +53,82 @@ public class clientCourseReport extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Client Course Report");
 
+        userTextField.setText("First Name");
+        userTextField.setMinimumSize(new java.awt.Dimension(125, 25));
+        userTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+
+        passTextField.setText("Last Name");
+        passTextField.setMinimumSize(new java.awt.Dimension(125, 25));
+        passTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Unit Complete", "Date", "Result", "Note"
+            }
+        ));
+        jTable1.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        firstnameTextField.setMinimumSize(new java.awt.Dimension(125, 30));
+        firstnameTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+
+        lastnameTextField.setMinimumSize(new java.awt.Dimension(125, 30));
+        lastnameTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+
+        lastSignInTextField.setMinimumSize(new java.awt.Dimension(125, 30));
+        lastSignInTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+
+        noOfSignInTextField.setMinimumSize(new java.awt.Dimension(125, 30));
+        noOfSignInTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+
+        userLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        userLabel.setForeground(new java.awt.Color(255, 255, 255));
+        userLabel.setText("Course:");
+
+        emailLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        emailLabel.setForeground(new java.awt.Color(255, 255, 255));
+        emailLabel.setText("Industry:");
+
+        lnLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lnLabel.setForeground(new java.awt.Color(255, 255, 255));
+        lnLabel.setText("Last Name:");
+
+        fnLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        fnLabel.setForeground(new java.awt.Color(255, 255, 255));
+        fnLabel.setText("First Name:");
+
+        exitButton1.setText("Exit");
+        exitButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButton1ActionPerformed(evt);
+            }
+        });
+
+        studentLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        studentLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        studentLabel1.setText("Student Name:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -45,14 +136,73 @@ public class clientCourseReport extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(389, 389, 389)
                 .addComponent(jLabel7)
-                .addContainerGap(389, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(studentLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lnLabel)
+                                    .addComponent(emailLabel)
+                                    .addComponent(userLabel)
+                                    .addComponent(fnLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(firstnameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lastnameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(noOfSignInTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lastSignInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(421, 421, 421)
+                                .addComponent(searchButton))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35))
+                    .addComponent(exitButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel7)
-                .addContainerGap(499, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton)
+                    .addComponent(studentLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fnLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lnLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emailLabel)
+                            .addComponent(lastSignInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(userLabel)
+                            .addComponent(noOfSignInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(90, 90, 90)
+                .addComponent(exitButton1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -68,6 +218,59 @@ public class clientCourseReport extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        String query = "SELECT * FROM clientusage WHERE firstname=? AND lastname=? ORDER BY date";
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, userTextField.getText());
+            ps.setString(2, passTextField.getText());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String FN = rs.getString("firstname");
+                firstnameTextField.setText(FN);
+                String LN = rs.getString("lastname");
+                lastnameTextField.setText(LN);
+                String LastSign = rs.getString("date");
+                lastSignInTextField.setText(LastSign);
+                String User = rs.getString("username");
+                noOfSignInTextField.setText(User);
+
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Student Names Invalid");
+            }
+        }
+        catch (Exception e){}
+
+        String sql = "SELECT COUNT * FROM clientusage WHERE firstname=? AND lastname=?";
+        try {
+            PreparedStatement ps2 = conn.prepareStatement(sql);
+            ps2.setString(1, userTextField.getText());
+            ps2.setString(2, passTextField.getText());
+            ResultSet rs2 = ps2.executeQuery();
+            if (rs2.next()) {
+                int rowCount = rs2.getInt(1);
+                noOfSignInTextField.setText(String.valueOf(rowCount));
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Student Names Invalid");
+            }
+
+        }
+        catch (Exception e){}
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
+        String delete = "TRUNCATE TABLE temp";
+        try {
+            PreparedStatement psDel = conn.prepareStatement(delete);
+            psDel.executeUpdate();
+        } catch (Exception e){}
+
+        System.exit(0);
+    }//GEN-LAST:event_exitButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,7 +308,22 @@ public class clientCourseReport extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JButton exitButton1;
+    private javax.swing.JTextField firstnameTextField;
+    private javax.swing.JLabel fnLabel;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField lastSignInTextField;
+    private javax.swing.JTextField lastnameTextField;
+    private javax.swing.JLabel lnLabel;
+    private javax.swing.JTextField noOfSignInTextField;
+    private javax.swing.JTextField passTextField;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JLabel studentLabel1;
+    private javax.swing.JLabel userLabel;
+    private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables
 }

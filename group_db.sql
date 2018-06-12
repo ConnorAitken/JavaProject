@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2018 at 01:28 AM
+-- Generation Time: Jun 12, 2018 at 04:05 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -76,7 +76,8 @@ INSERT INTO `clientusage` (`id`, `date`, `firstname`, `lastname`) VALUES
 (6, '2018-06-11', 'Admin', 'Guy'),
 (7, '2018-06-11', 'Admin', 'Guy'),
 (8, '2018-06-11', 'Admin', 'Guy'),
-(9, '2018-06-11', 'Admin', 'Guy');
+(9, '2018-06-11', 'Admin', 'Guy'),
+(10, '2018-06-12', 'Admin', 'Guy');
 
 -- --------------------------------------------------------
 
@@ -134,6 +135,13 @@ CREATE TABLE `temp` (
   `password` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `temp`
+--
+
+INSERT INTO `temp` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'pass');
+
 -- --------------------------------------------------------
 
 --
@@ -184,16 +192,16 @@ CREATE TABLE `userclient` (
   `contactNo` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `guardianName` varchar(50) NOT NULL,
-  `guardinContact` varchar(50) NOT NULL
+  `guardianContact` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `userclient`
 --
 
-INSERT INTO `userclient` (`id`, `username`, `password`, `firstname`, `lastname`, `age`, `email`, `contactNo`, `address`, `guardianName`, `guardinContact`) VALUES
+INSERT INTO `userclient` (`id`, `username`, `password`, `firstname`, `lastname`, `age`, `email`, `contactNo`, `address`, `guardianName`, `guardianContact`) VALUES
 (1, 'admin', 'pass', 'Admin', 'Guy', 100, '', '', '', '', ''),
-(2, 'connor', 'pass', 'Connor', 'Aitken', 18, 'email@email.com', '0412345678', '10 Address Drive', 'Mary', '0412364678');
+(2, 'connor', 'pass', 'Connor', 'Aitken', 18, 'email@email.com', '0412345678', 'Address Drive', 'Mary Little', '0418655678');
 
 --
 -- Indexes for dumped tables
@@ -287,7 +295,7 @@ ALTER TABLE `clientcoursedata`
 -- AUTO_INCREMENT for table `clientusage`
 --
 ALTER TABLE `clientusage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `industry`
@@ -305,7 +313,7 @@ ALTER TABLE `job`
 -- AUTO_INCREMENT for table `temp`
 --
 ALTER TABLE `temp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `usercaseworker`
