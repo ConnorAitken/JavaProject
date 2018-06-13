@@ -13,9 +13,14 @@ import javax.swing.JOptionPane;
 import Client.contentsClient;
 import Login.DBConnection;
 import Login.DBConnection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 import javax.swing.DefaultListModel;
+
+
+
 
 /**
  *
@@ -385,7 +390,12 @@ public class newClientQuestions extends javax.swing.JFrame {
 
     private void SubmitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButton1ActionPerformed
         // TODO add your handling code here:    
-         
+         try{
+            //Class.forName("com.mysql.jdbc.Driver");
+       Connection conn = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/group_db", "root", "");
+         }catch(SQLException e){
+             System.out.println(e);
+         }
         String firstname = firstNameTextField.getText();
         String lastname =  lastNameTextField.getText();
         String email = emailTextField.getText();
