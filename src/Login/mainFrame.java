@@ -193,7 +193,7 @@ public class mainFrame extends javax.swing.JFrame {
                 myUser.setMy_email(rs.getString("email"));
                 myUser.setMyfirstname(rs.getString("firstname"));
                 myUser.setMyguardianName(rs.getString("guardianName"));
-                myUser.setMyguardinContact(rs.getString("guardinContact"));
+                myUser.setMyguardinContact(rs.getString("guardianContact"));
                 myUser.setMylastname(rs.getString("lastname"));
                 myUser.setMypassword(rs.getString("password"));
                 myUser.setMyusername(rs.getString("username"));
