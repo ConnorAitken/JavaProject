@@ -306,7 +306,7 @@ public class newClientQuestions extends javax.swing.JFrame {
                             .addComponent(guardianTextField)
                             .addComponent(guardianContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(SubmitButton1))
-                .addContainerGap(359, Short.MAX_VALUE))
+                .addContainerGap(401, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
