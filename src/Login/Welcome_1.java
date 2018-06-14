@@ -14,10 +14,21 @@ import java.awt.event.MouseListener;
  * @author Connor
  */
 public class Welcome_1 extends javax.swing.JFrame {
-    
+    User myUser;
     /**
      * Creates new form Welcome_1
      */
+    
+    /**
+     * Creates new form Welcome_1
+     * @param user
+     */
+    public Welcome_1(User user) {
+        initComponents();
+        this.myUser =  user;
+        Welcome_1.this.setTitle("Welcome " + myUser.getMyusername());
+    }
+    
     public Welcome_1() {
         initComponents();
 
@@ -93,7 +104,7 @@ public class Welcome_1 extends javax.swing.JFrame {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        contentsClient frame = new contentsClient();
+        contentsClient frame = new contentsClient(myUser);
             frame.setVisible(true);
             setVisible(false);
             dispose();

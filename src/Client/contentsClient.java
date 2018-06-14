@@ -12,10 +12,16 @@ import Client.updateClientData;
  * @author 2105247816
  */
 public class contentsClient extends javax.swing.JFrame {
-
+    Login.User myUser;
     /**
      * Creates new form contentsClient
      */
+
+    public contentsClient(Login.User user) {
+        initComponents();
+        myUser = user;
+        this.setTitle("Welcome " + myUser.getMyusername());
+    }
     public contentsClient() {
         initComponents();
     }

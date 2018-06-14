@@ -22,6 +22,7 @@ import caseWorker.contentsCaseWorker;
  */
 public class mainFrame extends javax.swing.JFrame {
     Connection conn = new DBConnection().connect();
+    User myUser;
     /**
      * Creates new form mainFrame
      */
@@ -184,8 +185,21 @@ public class mainFrame extends javax.swing.JFrame {
             ps.setString(2, PasswordField1.getText());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+                myUser  = new User();
+                myUser.setMyid(rs.getInt("id"));
+                myUser.setMy_address(rs.getString("address"));
+                myUser.setMy_age(rs.getInt("age"));
+                myUser.setMy_contactNo(rs.getString("contactNo"));
+                myUser.setMy_email(rs.getString("email"));
+                myUser.setMyfirstname(rs.getString("firstname"));
+                myUser.setMyguardianName(rs.getString("guardianName"));
+                myUser.setMyguardinContact(rs.getString("guardinContact"));
+                myUser.setMylastname(rs.getString("lastname"));
+                myUser.setMypassword(rs.getString("password"));
+                myUser.setMyusername(rs.getString("username"));
+                
+                Welcome_1 Info = new Welcome_1(myUser);
                 this.dispose();
-                Welcome_1 Info = new Welcome_1();
                 Info.setVisible(true);
             }
             else {
