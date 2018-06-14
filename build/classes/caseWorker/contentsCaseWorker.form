@@ -26,10 +26,6 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="348" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -40,6 +36,10 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="356" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="344" max="32767" attributes="0"/>
@@ -93,7 +93,7 @@
           <Color blue="f4" green="b3" red="42" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Update Your Information"/>
+        <Property name="text" type="java.lang.String" value="Create or Update Client Details"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[400, 35]"/>
@@ -112,7 +112,7 @@
           <Color blue="f4" green="b3" red="42" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Industry and Course Details"/>
+        <Property name="text" type="java.lang.String" value="Update Case Worker Details"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[400, 35]"/>
@@ -128,7 +128,7 @@
           <Color blue="f4" green="b3" red="42" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Progress Tracker"/>
+        <Property name="text" type="java.lang.String" value="Update Client Course Details"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[400, 35]"/>

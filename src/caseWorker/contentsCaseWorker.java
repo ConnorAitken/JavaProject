@@ -45,7 +45,7 @@ public class contentsCaseWorker extends javax.swing.JFrame {
         updateInfoLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         updateInfoLabel.setForeground(new java.awt.Color(66, 179, 244));
         updateInfoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        updateInfoLabel.setText("Update Your Information");
+        updateInfoLabel.setText("Create or Update Client Details");
         updateInfoLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         updateInfoLabel.setPreferredSize(new java.awt.Dimension(400, 35));
         updateInfoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -57,14 +57,14 @@ public class contentsCaseWorker extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(66, 179, 244));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Industry and Course Details");
+        jLabel4.setText("Update Case Worker Details");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel4.setPreferredSize(new java.awt.Dimension(400, 35));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(66, 179, 244));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Progress Tracker");
+        jLabel5.setText("Update Client Course Details");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel5.setPreferredSize(new java.awt.Dimension(400, 35));
 
@@ -75,9 +75,6 @@ public class contentsCaseWorker extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(348, 348, 348)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(280, 280, 280)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -85,7 +82,10 @@ public class contentsCaseWorker extends javax.swing.JFrame {
                             .addComponent(updateInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(163, 163, 163)
-                                .addComponent(jLabel2)))))
+                                .addComponent(jLabel2))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(356, 356, 356)
+                        .addComponent(jLabel1)))
                 .addContainerGap(344, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
