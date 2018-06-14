@@ -10,7 +10,12 @@ package caseWorker;
  * @author 2105247816
  */
 public class User {
-
+    public User( String myFirstName, String myLastName, String date ){
+        firstName = myFirstName;
+        lastName = myLastName;
+        Date = date;
+ 
+ }   
     /**
      * @return the firstName
      */
@@ -52,12 +57,7 @@ public class User {
     public void setDate(String Date) {
         this.Date = Date;
     }
-     public User( String myFirstName, String myLastName, String date ){
-        firstName = myFirstName;
-        lastName = myLastName;
-        Date = date;
- 
- }
+     
 
     private String firstName;
     private String lastName;

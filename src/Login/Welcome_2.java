@@ -7,6 +7,7 @@ package Login;
 
 import caseWorker.contentsCaseWorker;
 import caseWorker.updateCaseWorkerDetails;
+import caseWorker.updateClientCourseDetails;
 /**
  *
  * @author 2105247816
@@ -96,7 +97,7 @@ public class Welcome_2 extends javax.swing.JFrame {
         setVisible(false);
         dispose();
         
-        /*updateCaseWorkerDetails frame = new updateCaseWorkerDetails();
+        /*updateClientCourseDetails frame = new updateClientCourseDetails();
         frame.setVisible(true);
         setVisible(false);
         dispose();*/

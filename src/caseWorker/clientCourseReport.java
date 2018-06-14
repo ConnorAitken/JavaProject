@@ -5,17 +5,24 @@
  */
 package caseWorker;
 
+import Login.DBConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 2105247816
  */
 public class clientCourseReport extends javax.swing.JFrame {
-
+Connection conn = new DBConnection().connect();
     /**
      * Creates new form clientCourseReport
      */
     public clientCourseReport() {
         initComponents();
+        idTextField.setVisible(false);
     }
 
     /**
@@ -36,14 +43,15 @@ public class clientCourseReport extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         firstnameTextField = new javax.swing.JTextField();
         lastnameTextField = new javax.swing.JTextField();
-        lastSignInTextField = new javax.swing.JTextField();
-        noOfSignInTextField = new javax.swing.JTextField();
+        industryTextField = new javax.swing.JTextField();
+        courseTextField = new javax.swing.JTextField();
         userLabel = new javax.swing.JLabel();
         emailLabel = new javax.swing.JLabel();
         lnLabel = new javax.swing.JLabel();
         fnLabel = new javax.swing.JLabel();
         exitButton1 = new javax.swing.JButton();
         studentLabel1 = new javax.swing.JLabel();
+        idTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,7 +91,7 @@ public class clientCourseReport extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Unit Complete", "Date", "Result", "Note"
+                "Units Complete", "Date", "Result", "Note"
             }
         ));
         jTable1.setColumnSelectionAllowed(true);
@@ -96,11 +104,11 @@ public class clientCourseReport extends javax.swing.JFrame {
         lastnameTextField.setMinimumSize(new java.awt.Dimension(125, 30));
         lastnameTextField.setPreferredSize(new java.awt.Dimension(125, 30));
 
-        lastSignInTextField.setMinimumSize(new java.awt.Dimension(125, 30));
-        lastSignInTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+        industryTextField.setMinimumSize(new java.awt.Dimension(125, 30));
+        industryTextField.setPreferredSize(new java.awt.Dimension(125, 30));
 
-        noOfSignInTextField.setMinimumSize(new java.awt.Dimension(125, 30));
-        noOfSignInTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+        courseTextField.setMinimumSize(new java.awt.Dimension(125, 30));
+        courseTextField.setPreferredSize(new java.awt.Dimension(125, 30));
 
         userLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         userLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,9 +146,9 @@ public class clientCourseReport extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(77, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(studentLabel1)
@@ -157,8 +165,8 @@ public class clientCourseReport extends javax.swing.JFrame {
                                     .addComponent(firstnameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(lastnameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(noOfSignInTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lastSignInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(courseTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(industryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -167,7 +175,11 @@ public class clientCourseReport extends javax.swing.JFrame {
                                 .addComponent(searchButton))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35))
-                    .addComponent(exitButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitButton1)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -175,34 +187,40 @@ public class clientCourseReport extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel7)
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton)
-                    .addComponent(studentLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fnLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lnLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(emailLabel)
-                            .addComponent(lastSignInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(userLabel)
-                            .addComponent(noOfSignInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90)
-                .addComponent(exitButton1)
-                .addContainerGap())
+                            .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchButton)
+                            .addComponent(studentLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fnLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lnLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(emailLabel)
+                                    .addComponent(industryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(userLabel)
+                                    .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(90, 90, 90)
+                        .addComponent(exitButton1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,7 +239,7 @@ public class clientCourseReport extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        String query = "SELECT * FROM clientusage WHERE firstname=? AND lastname=? ORDER BY date";
+        String query = "SELECT * FROM userclient WHERE firstname=? AND lastname=?";
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, userTextField.getText());
@@ -232,10 +250,9 @@ public class clientCourseReport extends javax.swing.JFrame {
                 firstnameTextField.setText(FN);
                 String LN = rs.getString("lastname");
                 lastnameTextField.setText(LN);
-                String LastSign = rs.getString("date");
-                lastSignInTextField.setText(LastSign);
-                String User = rs.getString("username");
-                noOfSignInTextField.setText(User);
+                String ID = rs.getString("id");
+                idTextField.setText(ID);
+                
 
             }
             else {
@@ -244,18 +261,19 @@ public class clientCourseReport extends javax.swing.JFrame {
         }
         catch (Exception e){}
 
-        String sql = "SELECT COUNT * FROM clientusage WHERE firstname=? AND lastname=?";
+        String sql = "SELECT * FROM clientcoursedata WHERE clientID=?";
         try {
             PreparedStatement ps2 = conn.prepareStatement(sql);
-            ps2.setString(1, userTextField.getText());
-            ps2.setString(2, passTextField.getText());
+            ps2.setString(1, idTextField.getText());
             ResultSet rs2 = ps2.executeQuery();
             if (rs2.next()) {
-                int rowCount = rs2.getInt(1);
-                noOfSignInTextField.setText(String.valueOf(rowCount));
+                String industry = rs2.getString("industry");
+                industryTextField.setText(industry);
+                String course = rs2.getString("course");
+                courseTextField.setText(course);
             }
             else {
-                JOptionPane.showMessageDialog(null, "Student Names Invalid");
+                JOptionPane.showMessageDialog(null, "Industry or Course Name Is Invalid");
             }
 
         }
@@ -308,18 +326,19 @@ public class clientCourseReport extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField courseTextField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JButton exitButton1;
     private javax.swing.JTextField firstnameTextField;
     private javax.swing.JLabel fnLabel;
+    private javax.swing.JTextField idTextField;
+    private javax.swing.JTextField industryTextField;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField lastSignInTextField;
     private javax.swing.JTextField lastnameTextField;
     private javax.swing.JLabel lnLabel;
-    private javax.swing.JTextField noOfSignInTextField;
     private javax.swing.JTextField passTextField;
     private javax.swing.JButton searchButton;
     private javax.swing.JLabel studentLabel1;

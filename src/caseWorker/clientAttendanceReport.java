@@ -37,7 +37,8 @@ Connection conn = new DBConnection().connect();
     public ArrayList<User> getUserList(){
        ArrayList<User> usersList = new ArrayList<User>();
        // set up the query 
-       String query = "SELECT * FROM clientusage";
+       String query = "SELECT * FROM 'clientusage' WHERE 'firstname'= 'Connor' AND 'lastname'= 'Aitken'";
+       //String query = "SELECT * FROM 'clientusage' WHERE 'firstname' = '"+userTextField.getText()+"' AND 'lastname' = '"+passTextField.getText()+"'";
        Statement st;
        ResultSet rs;
        
@@ -108,7 +109,6 @@ Connection conn = new DBConnection().connect();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        exitButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -126,13 +126,6 @@ Connection conn = new DBConnection().connect();
         searchButton = new javax.swing.JButton();
         exitButton1 = new javax.swing.JButton();
         studentLabel1 = new javax.swing.JLabel();
-
-        exitButton.setText("Exit");
-        exitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -211,7 +204,7 @@ Connection conn = new DBConnection().connect();
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -258,7 +251,7 @@ Connection conn = new DBConnection().connect();
                     .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentLabel)
                     .addComponent(searchButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -335,21 +328,13 @@ Connection conn = new DBConnection().connect();
         else {
         JOptionPane.showMessageDialog(null, "Student Names Invalid");
         }
-        
-        
         }
         catch (Exception e){}
+ 
+        
+        
+        
     }//GEN-LAST:event_searchButtonActionPerformed
-
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        String delete = "TRUNCATE TABLE temp";
-        try {
-            PreparedStatement psDel = conn.prepareStatement(delete);
-            psDel.executeUpdate();
-        } catch (Exception e){}
-
-        System.exit(0);
-    }//GEN-LAST:event_exitButtonActionPerformed
 
     private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
         String delete = "TRUNCATE TABLE temp";
@@ -399,7 +384,6 @@ Connection conn = new DBConnection().connect();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel emailLabel;
-    private javax.swing.JButton exitButton;
     private javax.swing.JButton exitButton1;
     private javax.swing.JTextField firstnameTextField;
     private javax.swing.JLabel fnLabel;
