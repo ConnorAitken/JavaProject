@@ -9,7 +9,10 @@ import Login.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,6 +26,81 @@ Connection conn = new DBConnection().connect();
     public clientCourseReport() {
         initComponents();
         idTextField.setVisible(false);
+    Show_Usage_In_Jtable();
+    }
+
+    // get a list of user from the mysql database
+    
+    public ArrayList<clientUnits> getUserList(){
+       ArrayList<clientUnits> usersList = new ArrayList<clientUnits>();
+       // set up the query 
+       String query = "SELECT * FROM clientunitdata WHERE clientID='"+idTextField.getText()+"'";
+       Statement st;
+       ResultSet rs;
+       
+       // execute the query
+       try{
+           st = conn.createStatement();
+           rs = st.executeQuery(query);
+           clientUnits units;
+           
+        // add user objects to the ArrayList
+        while(rs.next()) {
+        units = new clientUnits(rs.getString("units"), rs.getString("date"), rs.getString("result"), rs.getString("note"));
+        usersList.add(units);
+         
+        } // end of while loop 
+       
+       } catch (Exception e) {
+         
+       
+       }// end of try catch block
+      return usersList;
+    }
+    
+    public void Show_Usage_In_Jtable() {
+     // objects like jLists, jSpinner (Dropbox), jTable use a model for their information
+     ArrayList<clientUnits> list = getUserList();
+     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+     Object[] row = new Object[4];
+     
+     for(int i = 0; i < list.size(); i++) {// note no list.length() but size()
+         row[0] = list.get(i).getUnit();
+         row[1] = list.get(i).getDate();
+         row[2] = list.get(i).getResult();
+         row[3] = list.get(i).getNote();
+         model.addRow(row);
+     } // end of for
+    } // end of Show_User_In_Jtable()
+    
+    public void delete_data_in_table() {
+    DefaultTableModel model2 = (DefaultTableModel) jTable1.getModel();
+    model2.setRowCount(0);
+    }
+    
+    public void executeSQlQuery(String query, String message){
+     Statement st;
+     
+     try{
+         st = conn.createStatement();
+         
+         if((st.executeUpdate(query))==1){
+             
+                 // refreah jtable data
+                 DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                 model.setRowCount(0);
+                 Show_Usage_In_Jtable();
+                 // dialogbox to show message
+                 JOptionPane.showMessageDialog(null, "Data " + message + "Sucessful");
+             } else {    
+                 JOptionPane.showMessageDialog(null, "Data Not " + message);
+             } // end of if 
+         
+         
+         
+     } catch (Exception ex) {
+        
+     }
     }
 
     /**
@@ -52,6 +130,7 @@ Connection conn = new DBConnection().connect();
         exitButton1 = new javax.swing.JButton();
         studentLabel1 = new javax.swing.JLabel();
         idTextField = new javax.swing.JTextField();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,17 +157,7 @@ Connection conn = new DBConnection().connect();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Units Complete", "Date", "Result", "Note"
@@ -137,6 +206,13 @@ Connection conn = new DBConnection().connect();
         studentLabel1.setForeground(new java.awt.Color(255, 255, 255));
         studentLabel1.setText("Student Name:");
 
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -148,7 +224,7 @@ Connection conn = new DBConnection().connect();
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(77, Short.MAX_VALUE)
+                        .addContainerGap(55, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(studentLabel1)
@@ -161,12 +237,13 @@ Connection conn = new DBConnection().connect();
                                     .addComponent(userLabel)
                                     .addComponent(fnLabel))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(firstnameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lastnameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(courseTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(industryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(firstnameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(lastnameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(industryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -179,7 +256,9 @@ Connection conn = new DBConnection().connect();
                         .addGap(180, 180, 180)
                         .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exitButton1)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(backButton)
+                            .addComponent(exitButton1))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -214,7 +293,9 @@ Connection conn = new DBConnection().connect();
                                     .addComponent(userLabel)
                                     .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(90, 90, 90)
+                        .addGap(49, 49, 49)
+                        .addComponent(backButton)
+                        .addGap(18, 18, 18)
                         .addComponent(exitButton1)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -256,7 +337,7 @@ Connection conn = new DBConnection().connect();
 
             }
             else {
-                JOptionPane.showMessageDialog(null, "Student Names Invalid");
+                JOptionPane.showMessageDialog(null, "Student Name's Invalid");
             }
         }
         catch (Exception e){}
@@ -278,6 +359,8 @@ Connection conn = new DBConnection().connect();
 
         }
         catch (Exception e){}
+        
+        Show_Usage_In_Jtable();
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
@@ -289,6 +372,14 @@ Connection conn = new DBConnection().connect();
 
         System.exit(0);
     }//GEN-LAST:event_exitButton1ActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        contentsCaseWorker frame = new contentsCaseWorker();
+        frame.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,6 +417,7 @@ Connection conn = new DBConnection().connect();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JTextField courseTextField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JButton exitButton1;

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="32" green="32" red="32" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" pref="1004" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" pref="554" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea1">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="ICT50715 - Diploma of Software Development (Release 1)&#xa;&#xa;ICTICT418 Contribute to copyright, ethics and privacy in an ICT environment&#xa;&#xa;ICTPRG418 Apply intermediate programming skills in another language&#xa;&#xa;ICTPRG501 Apply advanced object-oriented language skills&#xa;&#xa;ICTPRG502 Manage a project using software management tools&#xa;&#xa;ICTPRG503 Debug and monitor applications&#xa;&#xa;ICTPRG504 Deploy an application to a production environment&#xa;&#xa;ICTPRG520 Validate an application design against specifications&#xa;&#xa;ICTPRG523 Apply advanced programming skills in another language&#xa;&#xa;ICTPRG527 Apply intermediate object-oriented language skills&#xa;&#xa;ICTPRG529 Apply testing techniques for software development&#xa;&#xa;ICTICT403 Apply software development methodologies&#xa;&#xa;ICTICT503 Validate quality and completeness of system design specifications&#xa;&#xa;ICTICT509 Gather data to identify business requirements&#xa;&#xa;ICTICT511 Match ICT needs with the strategic direction of the enterprise&#xa;&#xa;ICTICT514 Identify and manage the implementation of current industry-specific technologies&#xa;&#xa;ICTNWK514 Model preferred system solutions&#xa;&#xa;ICTPMG501 Manage ICT projects&#xa;&#xa;ICTPRG505 Build advanced user interface&#xa;&#xa;ICTPRG506 Design application architecture&#xa;&#xa;ICTPRG507 Implement security for applications&#xa;&#xa;ICTPRG508 Create mashups&#xa;&#xa;ICTPRG509 Build using rapid application development&#xa;&#xa;ICTPRG510 Maintain custom software&#xa;&#xa;ICTPRG512 Prepare for the build phase of an ICT system&#xa;&#xa;ICTPRG513 Coordinate the build phase of an ICT system&#xa;&#xa;ICTPRG514 Prepare for software development using rapid application development&#xa;&#xa;ICTPRG515 Review developed software&#xa;&#xa;ICTPRG601 Develop advanced mobile multi-touch applications&#xa;&#xa;ICTPRG604 Create cloud computing services&#xa;&#xa;ICTSAD501 Model data objects&#xa;&#xa;ICTSAD502 Model data processes&#xa;&#xa;ICTSAD506 Produce a feasibility report&#xa;&#xa;ICTSAS502 Establish and maintain client user liaison&#xa;"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

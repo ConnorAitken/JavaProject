@@ -5,17 +5,99 @@
  */
 package caseWorker;
 
+import Login.DBConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 2105247816
  */
 public class createOrUpdateClientDetails extends javax.swing.JFrame {
+Connection conn = new DBConnection().connect();
 
+    final DefaultListModel listModel = new DefaultListModel();
+    final DefaultListModel listModel1 = new DefaultListModel();    
+    final DefaultListModel listModel2 = new DefaultListModel();    
+    final DefaultListModel listModel3 = new DefaultListModel();
     /**
      * Creates new form createOrUpdateClientDetails
      */
     public createOrUpdateClientDetails() {
         initComponents();
+
+    addressTextField.setVisible(false);
+    contactNoTextField.setVisible(false);
+    courseTextField.setVisible(false);
+    emailTextField.setVisible(false);
+    firstNameTextField.setVisible(false);
+    guardianContactTextField.setVisible(false);
+    guardianTextField.setVisible(false);
+    idTextField.setVisible(false);
+    industryTextField.setVisible(false);
+    jLabel1.setVisible(false);
+    jLabel10.setVisible(false);
+    jLabel11.setVisible(false);
+    jLabel12.setVisible(false);
+    jLabel13.setVisible(false);
+    jLabel14.setVisible(false);
+    jLabel16.setVisible(false);
+    jLabel17.setVisible(true);
+    jLabel2.setVisible(false);
+    jLabel3.setVisible(false);
+    jLabel4.setVisible(false);
+    jLabel5.setVisible(false);
+    jLabel6.setVisible(false);
+    jLabel7.setVisible(false);
+    jLabel8.setVisible(false);
+    jLabel9.setVisible(false);
+    jPanel1.setVisible(true);
+    jScrollPane1.setVisible(false);
+    jScrollPane2.setVisible(false);
+    jScrollPane3.setVisible(false);
+    jScrollPane4.setVisible(false);
+    lastNameTextField.setVisible(false);
+    passTextField.setVisible(true);
+    userTextField.setVisible(true);
+    searchButton.setVisible(true);
+    SubmitButton1.setVisible(false);
+    
+    this.industryTextField.setDragEnabled(true);
+        listModel.addElement("IT");
+        listModel.addElement("Creative");
+        listModel.addElement("Hospitality and cookery");
+        
+        this.IndustryList.setModel(listModel);
+        this.IndustryList.setDragEnabled(true);
+        
+        //initComponents();
+        this.courseTextField.setDragEnabled(true);
+        listModel1.addElement("Website Development");
+        listModel1.addElement("Networking Administration");
+        listModel1.addElement("Software Development");
+        
+        this.ITCourseList.setModel(listModel1);
+        this.ITCourseList.setDragEnabled(true);
+        
+        //initComponents();
+        this.courseTextField.setDragEnabled(false);
+        listModel2.addElement("Hospitality");
+        listModel2.addElement("Cookery");
+        listModel2.addElement("Butchery");
+        
+        this.HospitalityCourseList.setModel(listModel2);
+        this.HospitalityCourseList.setDragEnabled(true);
+        
+        this.courseTextField.setDragEnabled(true);
+        listModel3.addElement("Acting");
+        listModel3.addElement("Digital screen and media");
+        listModel3.addElement("Fashion");
+        
+        this.CreativeCourseList.setModel(listModel3);
+        this.CreativeCourseList.setDragEnabled(true);
     }
 
     /**
@@ -27,21 +109,638 @@ public class createOrUpdateClientDetails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        firstNameTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        SubmitButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lastNameTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        emailTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        guardianTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        guardianContactTextField = new javax.swing.JTextField();
+        industryTextField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        courseTextField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        IndustryList = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ITCourseList = new javax.swing.JList<>();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        CreativeCourseList = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        HospitalityCourseList = new javax.swing.JList<>();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        addressTextField = new javax.swing.JTextField();
+        contactNoTextField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        idTextField = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        userTextField = new javax.swing.JTextField();
+        passTextField = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        searchButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(50, 50, 50));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1024, 576));
+        jPanel1.setRequestFocusEnabled(false);
+
+        firstNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstNameTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("First Name:");
+
+        SubmitButton1.setText("Submit");
+        SubmitButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Last Name:");
+
+        lastNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lastNameTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Email:");
+
+        emailTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Guardian Name:");
+
+        guardianTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardianTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Guardian Contact no:");
+
+        guardianContactTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardianContactTextFieldActionPerformed(evt);
+            }
+        });
+
+        industryTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                industryTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Industry:");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Course:");
+
+        courseTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseTextFieldActionPerformed(evt);
+            }
+        });
+
+        IndustryList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(IndustryList);
+
+        ITCourseList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(ITCourseList);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Industries:");
+
+        CreativeCourseList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(CreativeCourseList);
+
+        HospitalityCourseList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(HospitalityCourseList);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("IT Courses:");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Hospitality and Cookery Courses:");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Creative Courses:");
+
+        addressTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressTextFieldActionPerformed(evt);
+            }
+        });
+
+        contactNoTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactNoTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Contact no:");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Address:");
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Please Drag The Industry And Course You Wish To Enter:");
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Update Client Information");
+
+        userTextField.setText("First Name");
+        userTextField.setMinimumSize(new java.awt.Dimension(125, 25));
+        userTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+
+        passTextField.setText("Last Name");
+        passTextField.setMinimumSize(new java.awt.Dimension(125, 25));
+        passTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Enter Client First And Last Name");
+
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(industryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(44, 44, 44)
+                                        .addComponent(jLabel8)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(125, 125, 125))
+                                    .addComponent(jLabel14))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(SubmitButton1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(374, 374, 374)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel13))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(contactNoTextField)
+                                    .addComponent(addressTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jLabel2)
+                                                        .addGap(5, 5, 5))
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jLabel3)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(emailTextField)
+                                                    .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel4))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(guardianTextField)
+                                    .addComponent(guardianContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel16)
+                .addGap(353, 353, 353))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(318, 318, 318)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(122, 122, 122)
+                        .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(319, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel17)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addComponent(searchButton)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel16)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(contactNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(guardianTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(guardianContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(industryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(8, 8, 8)
+                .addComponent(backButton)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SubmitButton1))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void firstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_firstNameTextFieldActionPerformed
+
+    private void SubmitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButton1ActionPerformed
+        // TODO add your handling code here:
+
+        String firstname = firstNameTextField.getText();
+        String lastname =  lastNameTextField.getText();
+        String email = emailTextField.getText();
+        String contactNO = contactNoTextField.getText();
+        String address = addressTextField.getText();
+        String guardian =  guardianTextField.getText();
+        String guardianContact = guardianContactTextField.getText();
+        String industry = industryTextField.getText();
+        String course = courseTextField.getText();
+
+        if(contactNO.equals("")){contactNoTextField.setText("N/A");}
+        if(address.equals("")) {addressTextField.setText("N/A");}
+        if(guardian.equals("")){guardianTextField.setText("N/A");}
+        if(guardianContact.equals("")) { guardianContactTextField.setText("N/A");}
+
+        if(email.equals("") | firstname.equals("") | lastname.equals("") | industry.equals("") | course.equals("")){
+            JOptionPane.showMessageDialog(null, "Please Fill All Fields With A Bold Label");
+
+        } else {
+
+            String query = "UPDATE userclient SET email=?,contactNo=?,address=?,guardianName=?,guardianContact=? WHERE firstname=? and lastname=?";
+            try {
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, email);
+                ps.setString(2, contactNO);
+                ps.setString(3, address);
+                ps.setString(4, guardian);
+                ps.setString(5, guardianContact);
+                ps.setString(6, firstname);
+                ps.setString(7, lastname);
+                ps.executeUpdate();
+                if (ps.executeUpdate() > 0) {
+
+                    String sql = "Select * From userclient Where firstname=? And lastname=?";
+                    try {
+                        PreparedStatement ps2 = conn.prepareStatement(sql);
+                        ps2.setString(1, firstname);
+                        ps2.setString(2, lastname);
+                        ResultSet rs2 = ps2.executeQuery();
+                        if (rs2.next()) {
+                            String ID = rs2.getString("id");
+                            idTextField.setText(ID);
+
+                        PreparedStatement ps3;
+                        String query2 = "UPDATE clientcoursedata SET industry=?,course=? WHERE clientID=? ";
+                        try {
+                            ps3 = conn.prepareStatement(query2);
+                            ps3.setString(1, industry);
+                            ps3.setString(2, course);
+                            ps3.setString(3, idTextField.getText());
+                            ps3.executeUpdate();
+                            if (ps3.executeUpdate() > 0) {
+                                JOptionPane.showMessageDialog(null, "Updated");
+                                
+                                contentsCaseWorker frame = new contentsCaseWorker();
+                                frame.setVisible(true);
+                                setVisible(false);
+                                dispose();
+                }
+            }
+            catch (Exception e){}
+                        }
+                    }
+                    catch (Exception e){}
+                }
+            } catch (Exception e){}
+
+        }
+
+    }//GEN-LAST:event_SubmitButton1ActionPerformed
+
+    private void lastNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastNameTextFieldActionPerformed
+
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailTextFieldActionPerformed
+
+    private void guardianTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardianTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guardianTextFieldActionPerformed
+
+    private void guardianContactTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardianContactTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guardianContactTextFieldActionPerformed
+
+    private void industryTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_industryTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_industryTextFieldActionPerformed
+
+    private void courseTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_courseTextFieldActionPerformed
+
+    private void addressTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addressTextFieldActionPerformed
+
+    private void contactNoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactNoTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactNoTextFieldActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        String query = "SELECT * FROM userclient WHERE firstname=? AND lastname=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, userTextField.getText());
+            ps.setString(2, passTextField.getText());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String ID = rs.getString("id");
+                idTextField.setText(ID);
+                String FN = rs.getString("firstname");
+                firstNameTextField.setText(FN);
+                String LN = rs.getString("lastname");
+                lastNameTextField.setText(LN);
+                String Email = rs.getString("email");
+                emailTextField.setText(Email);
+                String contactNO = rs.getString("contactNO");
+                contactNoTextField.setText(contactNO);
+                String address = rs.getString("address");
+                addressTextField.setText(address);
+                String guardian = rs.getString("guardianName");
+                guardianTextField.setText(guardian);
+                String guardianContact = rs.getString("guardianContact");
+                guardianContactTextField.setText(guardianContact);
+                
+                String query2 = "SELECT * FROM clientcoursedata WHERE clientID=?";
+        try {
+            PreparedStatement ps2 = conn.prepareStatement(query2);
+            ps2.setString(1, idTextField.getText());
+            ResultSet rs2 = ps2.executeQuery();
+            if (rs2.next()) {
+                String industry = rs2.getString("industry");
+                industryTextField.setText(industry);
+                String course = rs2.getString("course");
+                courseTextField.setText(course);
+                
+                    addressTextField.setVisible(true);
+                    contactNoTextField.setVisible(true);
+                    courseTextField.setVisible(true);
+                    emailTextField.setVisible(true);
+                    firstNameTextField.setVisible(true);
+                    guardianContactTextField.setVisible(true);
+                    guardianTextField.setVisible(true);
+                    idTextField.setVisible(false);
+                    industryTextField.setVisible(true);
+                    jLabel1.setVisible(true);
+                    jLabel10.setVisible(true);
+                    jLabel11.setVisible(true);
+                    jLabel12.setVisible(true);
+                    jLabel13.setVisible(true);
+                    jLabel14.setVisible(true);
+                    jLabel16.setVisible(true);
+                    jLabel17.setVisible(false);
+                    jLabel2.setVisible(true);
+                    jLabel3.setVisible(true);
+                    jLabel4.setVisible(true);
+                    jLabel5.setVisible(true);
+                    jLabel6.setVisible(true);
+                    jLabel7.setVisible(true);
+                    jLabel8.setVisible(true);
+                    jLabel9.setVisible(true);
+                    jPanel1.setVisible(true);
+                    jScrollPane1.setVisible(true);
+                    jScrollPane2.setVisible(true);
+                    jScrollPane3.setVisible(true);
+                    jScrollPane4.setVisible(true);
+                    lastNameTextField.setVisible(true);
+                    passTextField.setVisible(false);
+                    userTextField.setVisible(false);
+                    searchButton.setVisible(false);
+                    SubmitButton1.setVisible(true);
+            }
+            else {
+                
+            }
+        }
+        catch (Exception e){}
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Client Name Invalid");
+            }
+        }
+        catch (Exception e){}
+        
+        
+        
+    
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        contentsCaseWorker frame = new contentsCaseWorker();
+        frame.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +778,45 @@ public class createOrUpdateClientDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> CreativeCourseList;
+    private javax.swing.JList<String> HospitalityCourseList;
+    private javax.swing.JList<String> ITCourseList;
+    private javax.swing.JList<String> IndustryList;
+    private javax.swing.JButton SubmitButton1;
+    private javax.swing.JTextField addressTextField;
+    private javax.swing.JButton backButton;
+    private javax.swing.JTextField contactNoTextField;
+    private javax.swing.JTextField courseTextField;
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JTextField firstNameTextField;
+    private javax.swing.JTextField guardianContactTextField;
+    private javax.swing.JTextField guardianTextField;
+    private javax.swing.JTextField idTextField;
+    private javax.swing.JTextField industryTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField lastNameTextField;
+    private javax.swing.JTextField passTextField;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables
 }

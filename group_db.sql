@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2018 at 04:05 AM
+-- Generation Time: Jun 18, 2018 at 05:12 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -50,7 +50,42 @@ CREATE TABLE `clientcoursedata` (
 --
 
 INSERT INTO `clientcoursedata` (`id`, `industry`, `course`, `clientID`) VALUES
-(1, 'IT', 'Software', 2);
+(1, 'IT', 'Software Development', 2),
+(2, 'IT', 'Hardware', 3),
+(10, 'Admin', 'Admin', 1),
+(14, 'IT', 'Software Development', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clientunitdata`
+--
+
+CREATE TABLE `clientunitdata` (
+  `id` int(11) NOT NULL,
+  `units` varchar(50) DEFAULT NULL,
+  `date` varchar(50) DEFAULT NULL,
+  `result` varchar(10) DEFAULT NULL,
+  `note` varchar(100) DEFAULT NULL,
+  `clientID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clientunitdata`
+--
+
+INSERT INTO `clientunitdata` (`id`, `units`, `date`, `result`, `note`, `clientID`) VALUES
+(1, 'test', '2018-06-11', 'A++', 'Test note 123', 2),
+(2, 'testunit', 'testdate', 'F-', 'Test note ', 1),
+(3, 'test123', '2018-06-11', 'A++', 'Test note 123', 2),
+(5, 'ICT50715', '2018-06-18', 'S', 'Completed first try', 2),
+(10, 'ICTSAD502', '2018-06-15', 'S', 'Well Done', 2),
+(12, 'testUnit123', '2018-06-06', 'F', 'test note', 1),
+(14, 'adadas', 'asdad', 'asdad', 'asdad', 1),
+(16, 'gdfgd', 'dgfdg', 'v', 'sdff', 1),
+(18, 'hdfdfhdfh', 'dfhdh', 'dfv', 'dvdvd', 1),
+(21, 'hfghfh', 'fhfh', 'fhf', 'hfffgh', 1),
+(23, 'hfgfhf', 'fhgfhf', 'fghfhf', 'fhfhfg', 1);
 
 -- --------------------------------------------------------
 
@@ -77,7 +112,33 @@ INSERT INTO `clientusage` (`id`, `date`, `firstname`, `lastname`) VALUES
 (7, '2018-06-11', 'Admin', 'Guy'),
 (8, '2018-06-11', 'Admin', 'Guy'),
 (9, '2018-06-11', 'Admin', 'Guy'),
-(10, '2018-06-12', 'Admin', 'Guy');
+(10, '2018-06-12', 'Admin', 'Guy'),
+(11, '2018-06-14', 'Admin', 'Guy'),
+(12, '2018-06-14', 'Admin', 'Guy'),
+(13, '2018-06-15', 'Connor', 'Aitken'),
+(14, '2018-06-15', 'Admin', 'Guy'),
+(15, '2018-06-15', 'Admin', 'Guy'),
+(16, '2018-06-15', 'Admin', 'Guy'),
+(17, '2018-06-15', 'Admin', 'Guy'),
+(18, '2018-06-15', 'Admin', 'Guy'),
+(19, '2018-06-15', 'Admin', 'Guy'),
+(20, '2018-06-15', 'Admin', 'Guy'),
+(21, '2018-06-15', 'Connor', 'Aitken'),
+(22, '2018-06-15', 'Admin', 'Guy'),
+(23, '2018-06-18', 'Connor', 'Aitken'),
+(24, '2018-06-18', 'Admin', 'Guy'),
+(25, '2018-06-18', 'Admin', 'Guy'),
+(26, '2018-06-18', 'Connor', 'Aitken'),
+(27, '2018-06-18', 'Connor', 'Aitken'),
+(28, '2018-06-18', 'Connor', 'Aitken'),
+(29, '2018-06-18', 'Connor', 'Aitken'),
+(30, '2018-06-18', 'Connor', 'Aitken'),
+(31, '2018-06-18', 'Connor', 'Aitken'),
+(32, '2018-06-18', 'Connor', 'Aitken'),
+(33, '2018-06-18', 'Connor', 'Aitken'),
+(34, '2018-06-18', 'Connor', 'Aitken'),
+(35, '2018-06-18', 'Connor', 'Aitken'),
+(36, '2018-06-18', 'Connor', 'Aitken');
 
 -- --------------------------------------------------------
 
@@ -135,13 +196,6 @@ CREATE TABLE `temp` (
   `password` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `temp`
---
-
-INSERT INTO `temp` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'pass');
-
 -- --------------------------------------------------------
 
 --
@@ -165,7 +219,7 @@ CREATE TABLE `usercaseworker` (
   `password` varchar(25) DEFAULT NULL,
   `firstname` varchar(25) DEFAULT NULL,
   `lastname` varchar(25) DEFAULT NULL,
-  `email` varchar(50) NOT NULL
+  `email` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -173,7 +227,8 @@ CREATE TABLE `usercaseworker` (
 --
 
 INSERT INTO `usercaseworker` (`id`, `username`, `password`, `firstname`, `lastname`, `email`) VALUES
-(1, 'jsmith', 'pass', 'John', 'Smith', 'jsmith@email.com');
+(1, 'jsmith', 'pass', 'John', 'Smith', 'jsmith@email.com.au'),
+(2, 'dhunt', 'pass', 'David', 'Hunt', 'dhunt@email.com.au');
 
 -- --------------------------------------------------------
 
@@ -188,11 +243,11 @@ CREATE TABLE `userclient` (
   `firstname` varchar(100) DEFAULT NULL,
   `lastname` varchar(100) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
-  `email` varchar(50) NOT NULL,
-  `contactNo` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `guardianName` varchar(50) NOT NULL,
-  `guardianContact` varchar(50) NOT NULL
+  `email` varchar(50) DEFAULT NULL,
+  `contactNo` varchar(50) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `guardianName` varchar(50) DEFAULT NULL,
+  `guardianContact` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -200,8 +255,10 @@ CREATE TABLE `userclient` (
 --
 
 INSERT INTO `userclient` (`id`, `username`, `password`, `firstname`, `lastname`, `age`, `email`, `contactNo`, `address`, `guardianName`, `guardianContact`) VALUES
-(1, 'admin', 'pass', 'Admin', 'Guy', 100, '', '', '', '', ''),
-(2, 'connor', 'pass', 'Connor', 'Aitken', 18, 'email@email.com', '0412345678', 'Address Drive', 'Mary Little', '0418655678');
+(1, 'admin', 'pass', 'Admin', 'Guy', 100, 'N/A', 'N/A', 'N/A', 'N/A', 'N/A'),
+(2, 'connor', 'pass', 'Connor', 'Aitken', 18, 'connor@email.com', 'N/A', 'Somewhere Street', 'Bill', 'N/A'),
+(3, 'wick', 'pass', 'John', 'Wick', 40, 'N/A', 'N/A', 'N/A', 'N/A', 'N/A'),
+(4, 'bill', 'pass', 'Bill', 'Smith', 45, 'bill@email.com', 'N/A', 'N/A', 'N/A', 'N/A');
 
 --
 -- Indexes for dumped tables
@@ -217,7 +274,16 @@ ALTER TABLE `caseworkerdata`
 -- Indexes for table `clientcoursedata`
 --
 ALTER TABLE `clientcoursedata`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `clientID` (`clientID`),
+  ADD UNIQUE KEY `clientID_2` (`clientID`);
+
+--
+-- Indexes for table `clientunitdata`
+--
+ALTER TABLE `clientunitdata`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `units` (`units`);
 
 --
 -- Indexes for table `clientusage`
@@ -289,13 +355,19 @@ ALTER TABLE `caseworkerdata`
 -- AUTO_INCREMENT for table `clientcoursedata`
 --
 ALTER TABLE `clientcoursedata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `clientunitdata`
+--
+ALTER TABLE `clientunitdata`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `clientusage`
 --
 ALTER TABLE `clientusage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `industry`
@@ -313,19 +385,19 @@ ALTER TABLE `job`
 -- AUTO_INCREMENT for table `temp`
 --
 ALTER TABLE `temp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `usercaseworker`
 --
 ALTER TABLE `usercaseworker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `userclient`
 --
 ALTER TABLE `userclient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

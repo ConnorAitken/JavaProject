@@ -38,7 +38,7 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
         courseLabel = new javax.swing.JLabel();
         courseTextField = new javax.swing.JTextField();
         industryTextField = new javax.swing.JTextField();
-        updateButton = new javax.swing.JButton();
+        insertButton = new javax.swing.JButton();
         unitLabel = new javax.swing.JLabel();
         resultLabel = new javax.swing.JLabel();
         noteLabel = new javax.swing.JLabel();
@@ -55,6 +55,8 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
         idTextField = new javax.swing.JTextField();
         dateLabel = new javax.swing.JLabel();
         dateTextField = new javax.swing.JTextField();
+        backButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,10 +78,10 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
         industryTextField.setMinimumSize(new java.awt.Dimension(125, 30));
         industryTextField.setPreferredSize(new java.awt.Dimension(125, 30));
 
-        updateButton.setText("Update");
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
+        insertButton.setText("Insert");
+        insertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
+                insertButtonActionPerformed(evt);
             }
         });
 
@@ -110,7 +112,7 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Update Client Course Details");
+        jLabel7.setText("Insert Client Course Details");
 
         firstNameTextField.setText("First Name");
         firstNameTextField.setMinimumSize(new java.awt.Dimension(125, 25));
@@ -142,8 +144,24 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
         dateLabel.setForeground(new java.awt.Color(255, 255, 255));
         dateLabel.setText("Date:");
 
+        dateTextField.setText("yyyy-mm-dd");
         dateTextField.setMinimumSize(new java.awt.Dimension(125, 30));
         dateTextField.setPreferredSize(new java.awt.Dimension(125, 30));
+
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Click Here For Units List");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,7 +173,7 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
                         .addGap(207, 207, 207)
                         .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(updateButton))
+                        .addComponent(insertButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -167,9 +185,11 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(industryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(courseTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(unitsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(unitsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel1))
+                                    .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -189,9 +209,6 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(exitButton)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(studentLabel)
                         .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -200,7 +217,12 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
                                 .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(336, 336, 336))))
+                        .addGap(336, 336, 336))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(backButton)
+                            .addComponent(exitButton))
+                        .addGap(14, 14, 14))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,35 +237,42 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(searchButton)
                         .addGap(233, 233, 233)
-                        .addComponent(updateButton))
+                        .addComponent(insertButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(industryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(industryLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(courseLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(unitLabel)
-                            .addComponent(unitsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dateLabel)
-                            .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(resultLabel)
-                            .addComponent(resultTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(noteLabel)
-                            .addComponent(noteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(industryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(industryLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(courseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(courseLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(unitLabel)
+                                    .addComponent(unitsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(dateLabel)
+                                    .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(resultLabel)
+                                    .addComponent(resultTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(noteLabel)
+                                    .addComponent(noteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 25, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(backButton)))
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitButton)
                     .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -264,7 +293,7 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+    private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
         // TODO add your handling code here:
         String industry = industryTextField.getText();
         String course =  courseTextField.getText();
@@ -278,7 +307,7 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
         } else {
 
             PreparedStatement ps;
-            String query = "UPDATE clientunitdata SET units=?,date=?,result=?,note=? WHERE clientID=? ";
+            String query = "INSERT INTO clientunitdata (units,date,result,note,clientID) VALUES (?, ?, ?, ?, ?)";
             try {
                 ps = conn.prepareStatement(query);
                 ps.setString(1, units);
@@ -288,31 +317,18 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
                 ps.setString(5, idTextField.getText());
                 ps.executeUpdate();
                 if (ps.executeUpdate() > 0) {
-                    JOptionPane.showMessageDialog(null, "Updated");
+                    JOptionPane.showMessageDialog(null, "Inserted");
+                    JOptionPane.showMessageDialog(null, "New User Added. Please Continue With Process");
                     
 
                 }
+                
             }
             catch (Exception e){}
-            
-            PreparedStatement ps2;
-            String query2 = "UPDATE clientcoursedata SET industry=?,course=? WHERE clientID=? ";
-            try {
-                ps2 = conn.prepareStatement(query2);
-                ps2.setString(1, industry);
-                ps2.setString(2, course);
-                ps2.setString(3, idTextField.getText());
-                ps2.executeUpdate();
-                if (ps2.executeUpdate() > 0) {
-                    JOptionPane.showMessageDialog(null, "Updated");
-                    
-
-                }
-            }
-            catch (Exception e){}
-
+ 
+            JOptionPane.showMessageDialog(null, "Inserted");
         }
-    }//GEN-LAST:event_updateButtonActionPerformed
+    }//GEN-LAST:event_insertButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
@@ -333,8 +349,7 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
                         if (rs2.next()) {
                             String ID = rs2.getString("id");
                             idTextField.setText(ID);
-                            
-                            JOptionPane.showMessageDialog(null, "done1");
+
                             }
                     }
                     catch (Exception e){}
@@ -349,33 +364,13 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
                 industryTextField.setText(Industry);
                 String Course = rs.getString("course");
                 courseTextField.setText(Course);
-                
-                JOptionPane.showMessageDialog(null, "done2");
+
             }
             
         }
         catch (Exception e){}
         
-        String query2 = "SELECT * FROM clientunitdata WHERE clientID=?";
-        try {
-            PreparedStatement ps2 = conn.prepareStatement(query2);
-            ps2.setString(1, idTextField.getText());
-            ResultSet rs2 = ps2.executeQuery();
-            if (rs2.next()) {
-                String Unit = rs2.getString("units");
-                unitsTextField.setText(Unit);
-                String Date = rs2.getString("date");
-                dateTextField.setText(Date);
-                String Result = rs2.getString("result");
-                resultTextField.setText(Result);
-                String Note = rs2.getString("note");
-                noteTextField.setText(Note);
-                
-                JOptionPane.showMessageDialog(null, "done2");
-            }
-            
-        }
-        catch (Exception e){}
+        
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -391,6 +386,22 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        contentsCaseWorker frame = new contentsCaseWorker();
+        frame.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        units frame = new units();
+        frame.setVisible(true);
+        setVisible(true);
+        //dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -428,6 +439,7 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel courseLabel;
     private javax.swing.JTextField courseTextField;
     private javax.swing.JLabel dateLabel;
@@ -437,6 +449,8 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
     private javax.swing.JTextField idTextField;
     private javax.swing.JLabel industryLabel;
     private javax.swing.JTextField industryTextField;
+    private javax.swing.JButton insertButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField lastNameTextField;
@@ -448,6 +462,5 @@ public class updateClientCourseDetails extends javax.swing.JFrame {
     private javax.swing.JLabel studentLabel;
     private javax.swing.JLabel unitLabel;
     private javax.swing.JTextField unitsTextField;
-    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

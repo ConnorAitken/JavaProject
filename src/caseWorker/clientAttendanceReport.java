@@ -37,7 +37,8 @@ Connection conn = new DBConnection().connect();
     public ArrayList<User> getUserList(){
        ArrayList<User> usersList = new ArrayList<User>();
        // set up the query 
-       String query = "SELECT * FROM 'clientusage' WHERE 'firstname'= 'Connor' AND 'lastname'= 'Aitken'";
+       String query = "SELECT * FROM clientusage WHERE firstname='"+userTextField.getText()+"' AND lastname='"+passTextField.getText()+"'";
+       //"+userTextField.getText()+"' AND lastname='"+passTextField.getText()+"'";//WHERE 'firstname'= 'Connor' AND 'lastname'= 'Aitken'";
        //String query = "SELECT * FROM 'clientusage' WHERE 'firstname' = '"+userTextField.getText()+"' AND 'lastname' = '"+passTextField.getText()+"'";
        Statement st;
        ResultSet rs;
@@ -75,6 +76,11 @@ Connection conn = new DBConnection().connect();
          model.addRow(row);
      } // end of for
     } // end of Show_User_In_Jtable()
+    
+    public void delete_data_in_table() {
+    DefaultTableModel model2 = (DefaultTableModel) jTable1.getModel();
+    model2.setRowCount(0);
+    }
     
     public void executeSQlQuery(String query, String message){
      Statement st;
@@ -126,6 +132,7 @@ Connection conn = new DBConnection().connect();
         searchButton = new javax.swing.JButton();
         exitButton1 = new javax.swing.JButton();
         studentLabel1 = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,6 +206,13 @@ Connection conn = new DBConnection().connect();
         studentLabel1.setForeground(new java.awt.Color(255, 255, 255));
         studentLabel1.setText("Client Attendance");
 
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -234,11 +248,13 @@ Connection conn = new DBConnection().connect();
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(45, 45, 45))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(exitButton1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(studentLabel1)
-                        .addGap(404, 404, 404))))
+                        .addGap(404, 404, 404))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(backButton)
+                            .addComponent(exitButton1))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,7 +286,9 @@ Connection conn = new DBConnection().connect();
                             .addComponent(userLabel)
                             .addComponent(noOfSignInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(92, 92, 92)
+                .addGap(51, 51, 51)
+                .addComponent(backButton)
+                .addGap(18, 18, 18)
                 .addComponent(exitButton1)
                 .addContainerGap())
         );
@@ -291,7 +309,8 @@ Connection conn = new DBConnection().connect();
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        String query = "SELECT * FROM clientusage WHERE firstname=? AND lastname=? ORDER BY date";
+        
+        String query = "SELECT * FROM clientusage WHERE firstname=? AND lastname=? ORDER BY date DESC";
         try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, userTextField.getText());
@@ -307,7 +326,7 @@ Connection conn = new DBConnection().connect();
                 String User = rs.getString("username");
                 noOfSignInTextField.setText(User);
 
-
+                delete_data_in_table();
             }
             else {
                 JOptionPane.showMessageDialog(null, "Student Names Invalid");
@@ -315,23 +334,13 @@ Connection conn = new DBConnection().connect();
         }
         catch (Exception e){}
         
-        String sql = "SELECT COUNT * FROM clientusage WHERE firstname=? AND lastname=?";
-        try {
-        PreparedStatement ps2 = conn.prepareStatement(sql);
-        ps2.setString(1, userTextField.getText());
-        ps2.setString(2, passTextField.getText());
-        ResultSet rs2 = ps2.executeQuery();
-        if (rs2.next()) {
-        int rowCount = rs2.getInt(1);
-        noOfSignInTextField.setText(String.valueOf(rowCount));
-        }
-        else {
-        JOptionPane.showMessageDialog(null, "Student Names Invalid");
-        }
-        }
-        catch (Exception e){}
- 
         
+        delete_data_in_table();
+        
+        Show_Usage_In_Jtable();
+        
+        int rowNO = jTable1.getRowCount();
+        noOfSignInTextField.setText(String.valueOf(rowNO));
         
         
     }//GEN-LAST:event_searchButtonActionPerformed
@@ -345,6 +354,14 @@ Connection conn = new DBConnection().connect();
 
         System.exit(0);
     }//GEN-LAST:event_exitButton1ActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        contentsCaseWorker frame = new contentsCaseWorker();
+        frame.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,6 +400,7 @@ Connection conn = new DBConnection().connect();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JButton exitButton1;
     private javax.swing.JTextField firstnameTextField;

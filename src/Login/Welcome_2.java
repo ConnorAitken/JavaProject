@@ -96,11 +96,6 @@ public class Welcome_2 extends javax.swing.JFrame {
         frame.setVisible(true);
         setVisible(false);
         dispose();
-        
-        /*updateClientCourseDetails frame = new updateClientCourseDetails();
-        frame.setVisible(true);
-        setVisible(false);
-        dispose();*/
     }//GEN-LAST:event_jPanel1MouseClicked
 
     /**

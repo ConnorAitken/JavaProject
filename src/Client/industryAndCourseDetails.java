@@ -4,18 +4,83 @@
  * and open the template in the editor.
  */
 package Client;
+import Login.DBConnection;
+import javax.swing.JOptionPane;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import Client.contentsClient;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
+import caseWorker.contentsCaseWorker;
+import java.sql.SQLException;
 /**
  *
  * @author 2105247816
  */
 public class industryAndCourseDetails extends javax.swing.JFrame {
-
+    Connection conn = new DBConnection().connect();
+    Client.User myUser;
     /**
      * Creates new form industryAndCourseDetails
      */
     public industryAndCourseDetails() {
         initComponents();
+        
+        idTextField.setVisible(false);
+        userTextField.setVisible(false);
+        passTextField.setVisible(false);
+        jLabel1.setVisible(false);
+        
+        String sql = "Select * From temp";
+                    try {
+                        PreparedStatement ps = conn.prepareStatement(sql);
+                        ResultSet rs = ps.executeQuery();
+                        if (rs.next()) {
+                            String User = rs.getString("username");
+                            userTextField.setText(User);
+                            String Pass = rs.getString("password");
+                            passTextField.setText(Pass);
+                            JOptionPane.showMessageDialog(null, "done1");
+                            }
+                    }
+                    catch (Exception e){}
+                    
+        String sql2 = "Select * From userclient Where username=? And password=?";
+                    try {
+                        PreparedStatement ps2 = conn.prepareStatement(sql2);
+                        ps2.setString(1, userTextField.getText());
+                        ps2.setString(2, passTextField.getText());
+                        ResultSet rs2 = ps2.executeQuery();
+                        if (rs2.next()) {
+                            String ID = rs2.getString("id");
+                            idTextField.setText(ID);
+                            
+                            JOptionPane.showMessageDialog(null, "done2");
+                            }
+                    }
+                    catch (Exception e){}
+                    
+        String sql3 = "Select * From clientcoursedata Where clientID='" + idTextField.getText() +"' ";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql3);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            String Industry = rs.getString("industry");
+            jLabel5.setText(Industry);
+            String Course = rs.getString("course");
+            jLabel9.setText(Course);   
+            
+            if(Industry.equals("IT")){jLabel1.setVisible(true); jLabel1.setText("The IT Industry offers a range of courses in IT systems administration, ");}
+            if(Industry.equals("IT")){jLabel4.setVisible(true); jLabel4.setText("IT networking, software development, telecommunications, web-based technologies, ");}
+            if(Industry.equals("IT")){jLabel3.setVisible(true); jLabel3.setText("website development, cyber security, as well as information, digital media and technology.");}
+            }
+        }catch(Exception e)
+    {System.out.print(e);}
+        
+        
+        
     }
 
     /**
@@ -27,25 +92,209 @@ public class industryAndCourseDetails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        courseLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        industryLabel = new javax.swing.JLabel();
+        exitButton = new javax.swing.JButton();
+        userTextField = new javax.swing.JTextField();
+        passTextField = new javax.swing.JTextField();
+        idTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(50, 50, 50));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 175, 202), 4));
+
+        courseLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        courseLabel.setForeground(new java.awt.Color(255, 255, 255));
+        courseLabel.setText("Course:");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Course and Industry details");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("jLabel5");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("jLabel9");
+
+        industryLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        industryLabel.setForeground(new java.awt.Color(255, 255, 255));
+        industryLabel.setText("Industry:");
+
+        exitButton.setText("Exit");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
+
+        userTextField.setText("jTextField1");
+
+        passTextField.setText("jTextField1");
+
+        idTextField.setText("jTextField1");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("jLabel1");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("jLabel1");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("jLabel1");
+
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitButton)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 247, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(254, 254, 254))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(courseLabel)
+                                        .addGap(41, 41, 41)
+                                        .addComponent(jLabel9))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(industryLabel)
+                                        .addGap(41, 41, 41)
+                                        .addComponent(jLabel5)))
+                                .addGap(466, 466, 466))))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(288, 288, 288)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addGap(110, 110, 110)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(industryLabel)
+                    .addComponent(jLabel5))
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(courseLabel)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitButton))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        String delete = "TRUNCATE TABLE temp";
+        try {
+            PreparedStatement psDel = conn.prepareStatement(delete);
+            psDel.executeUpdate();
+        } catch (Exception e){}
+
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        contentsClient frame = new contentsClient();
+        frame.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
+     private void ShowCourseAndIndustryDetails(User user) throws SQLException {  
+    /*
+        String sql = "Select * From 'clientcoursedata' Where clientID='" + idTextField.getText() +"' ";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            String Industry = rs.getString("industry");
+            jLabel5.setText(Industry);
+            String Course = rs.getString("course");
+            jLabel9.setText(Course);
+            String Units = rs.getString("units");
+            jLabel10.setText(Units);
+            
+    }
+        }catch(Exception e)
+    {System.out.print(e);}*/
+     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -69,6 +318,7 @@ public class industryAndCourseDetails extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(industryAndCourseDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -79,5 +329,19 @@ public class industryAndCourseDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel courseLabel;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JTextField idTextField;
+    private javax.swing.JLabel industryLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField passTextField;
+    private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -74,18 +74,18 @@ public class contentsClient extends javax.swing.JFrame {
         progressLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         progressLabel.setForeground(new java.awt.Color(255, 255, 255));
         progressLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        progressLabel.setText("Progress Tracker");
+        progressLabel.setText("Course Progress");
         progressLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         progressLabel.setPreferredSize(new java.awt.Dimension(400, 35));
         progressLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 progressLabelMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                progressLabelMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 progressLabelMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                progressLabelMouseEntered(evt);
             }
         });
 
