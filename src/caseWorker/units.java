@@ -7,7 +7,7 @@ package caseWorker;
 
 /**
  *
- * @author 2105247816
+ * @author Connor Aitken
  */
 public class units extends javax.swing.JFrame {
 

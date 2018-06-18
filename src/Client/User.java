@@ -7,7 +7,7 @@ package Client;
 
 /**
  *
- * @author 1102634617
+ * @author saugat raut
  */
 public class User {
    

@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 
 /**
  *
- * @author Connor
+ * @author Connor Aitken
  */
 public class Welcome_1 extends javax.swing.JFrame {
     

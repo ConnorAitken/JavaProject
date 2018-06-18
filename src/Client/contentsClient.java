@@ -18,7 +18,7 @@ import java.sql.PreparedStatement;
 import javax.swing.event.MouseInputAdapter;
 /**
  *
- * @author 2105247816
+ * @author Connor Aitken
  */
 public class contentsClient extends javax.swing.JFrame {
     Connection conn = new DBConnection().connect();

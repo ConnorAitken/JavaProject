@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author 2105247816
+ * @author Connor Aitken
  */
 public class DBConnection {
     private Connection DBConnection;

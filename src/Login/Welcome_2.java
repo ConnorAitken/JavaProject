@@ -10,7 +10,7 @@ import caseWorker.updateCaseWorkerDetails;
 import caseWorker.updateClientCourseDetails;
 /**
  *
- * @author 2105247816
+ * @author Connor Aitken
  */
 public class Welcome_2 extends javax.swing.JFrame {
 

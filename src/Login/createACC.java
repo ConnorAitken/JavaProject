@@ -15,7 +15,7 @@ import Client.newClientQuestions;
 
 /**
  *
- * @author 2105247816
+ * @author Connor Aitken
  */
 public class createACC extends javax.swing.JFrame {
     Connection conn = new DBConnection().connect();

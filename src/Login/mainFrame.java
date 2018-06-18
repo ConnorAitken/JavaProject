@@ -20,10 +20,10 @@ import javax.swing.ImageIcon;
         
 /**
  *
- * @author Connor
+ * @author Connor Aitken
  */
 public class mainFrame extends javax.swing.JFrame {
-    Connection conn = new DBConnection().connect();
+    Connection conn = new DBConnection().connect(); // Connects to database
     /**
      * Creates new form mainFrame
      */
@@ -145,9 +145,9 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGap(0, 72, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(91, 91, 91)
-                .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -179,10 +179,10 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SignInButton)
                     .addComponent(createAccButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addComponent(exitButton)
                 .addContainerGap())
@@ -213,6 +213,7 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
         
+        // Gets user's name and signs in user
         String sql = "Select * From userclient Where username=? And password=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -225,6 +226,7 @@ public class mainFrame extends javax.swing.JFrame {
                 String LN = rs.getString("lastname");
                 lastnameTextField.setText(LN);
                 
+                // records user logging in
                 String INSERT_RECORD = "INSERT INTO clientusage(date, firstname, lastname) VALUES(?, ?, ?)";
                     try {
                         PreparedStatement pstmt = conn.prepareStatement(INSERT_RECORD);
@@ -242,7 +244,8 @@ public class mainFrame extends javax.swing.JFrame {
                 Info.setVisible(true);
             }
             else {
-
+                
+                // signs in caseworker
                 String query = "Select * From usercaseworker Where username=? And password=?";
                 try {
                     PreparedStatement ps2 = conn.prepareStatement(query);

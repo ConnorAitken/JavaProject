@@ -18,7 +18,7 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author 2105247816
+ * @author Connor Aitken
  */
 public class updateCaseWorkerDetails extends javax.swing.JFrame {
     Connection conn = new DBConnection().connect();

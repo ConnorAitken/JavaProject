@@ -7,7 +7,7 @@ package caseWorker;
 
 /**
  *
- * @author 2105247816
+ * @author Connor Aitken
  */
 public class User {
     public User( String myFirstName, String myLastName, String date ){

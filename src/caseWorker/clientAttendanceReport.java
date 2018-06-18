@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author 2105247816
+ * @author Connor Aitken
  */
 public class clientAttendanceReport extends javax.swing.JFrame {
 Connection conn = new DBConnection().connect();
