@@ -6,6 +6,7 @@
 package Client;
 
 import Login.DBConnection;
+import Login.loginHelp;
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -120,6 +121,7 @@ public class updateClientData extends javax.swing.JFrame {
         jButton_Back = new javax.swing.JButton();
         idTextField = new javax.swing.JTextField();
         jButton_Exit = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -198,6 +200,15 @@ public class updateClientData extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("?");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -248,6 +259,8 @@ public class updateClientData extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65)
                         .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -310,7 +323,8 @@ public class updateClientData extends javax.swing.JFrame {
                     .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Exit))
+                    .addComponent(jButton_Exit)
+                    .addComponent(jLabel4))
                 .addContainerGap())
         );
 
@@ -389,6 +403,13 @@ public class updateClientData extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton_ExitActionPerformed
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        updateClientDataHelp Frame = new updateClientDataHelp();
+        Frame.setVisible(true);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -433,6 +454,7 @@ public class updateClientData extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel_Address;
     private javax.swing.JLabel jLabel_Age;
     private javax.swing.JLabel jLabel_Contact;

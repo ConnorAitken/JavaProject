@@ -5,7 +5,10 @@
  */
 package caseWorker;
 
+import Login.DBConnection;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 
 /**
@@ -14,7 +17,7 @@ import java.awt.Color;
  *          
  */
 public class contentsCaseWorker extends javax.swing.JFrame {
-
+Connection conn = new DBConnection().connect();
     /**
      * Creates new form contentsCaseWorker
      */
@@ -119,6 +122,11 @@ public class contentsCaseWorker extends javax.swing.JFrame {
         Exit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ExitMouseClicked(evt);
+            }
+        });
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
             }
         });
 
@@ -308,6 +316,16 @@ public class contentsCaseWorker extends javax.swing.JFrame {
         String underline = "Client Course Report";
         ClientCourse.setText(underline);
     }//GEN-LAST:event_ClientCourseMouseExited
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        // TODO add your handling code here:
+        String delete = "DELETE * FROM temp";
+        try {
+        PreparedStatement psDel = conn.prepareStatement(delete);
+        psDel.executeQuery();
+        } catch (Exception e){}
+        System.exit(0);
+    }//GEN-LAST:event_ExitActionPerformed
 
     /**
      * @param args the command line arguments

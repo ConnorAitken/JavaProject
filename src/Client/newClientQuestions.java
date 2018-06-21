@@ -88,8 +88,6 @@ public class newClientQuestions extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         firstNameTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -125,10 +123,7 @@ public class newClientQuestions extends javax.swing.JFrame {
         idTextField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-
-        jButton2.setText("jButton2");
-
-        jPasswordField1.setText("jPasswordField1");
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -285,6 +280,15 @@ public class newClientQuestions extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Please Enter Your Information");
 
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("?");
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -335,6 +339,8 @@ public class newClientQuestions extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(SubmitButton1))))
@@ -429,10 +435,11 @@ public class newClientQuestions extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(49, 49, 49)
+                        .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SubmitButton1)))
+                            .addComponent(SubmitButton1)
+                            .addComponent(jLabel15)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -583,6 +590,13 @@ public class newClientQuestions extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_contactNoTextFieldActionPerformed
 
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        clientQsHelp Frame = new clientQsHelp();
+        Frame.setVisible(true);
+    }//GEN-LAST:event_jLabel15MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -633,13 +647,13 @@ public class newClientQuestions extends javax.swing.JFrame {
     private javax.swing.JTextField guardianTextField;
     private javax.swing.JTextField idTextField;
     private javax.swing.JTextField industryTextField;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -650,7 +664,6 @@ public class newClientQuestions extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

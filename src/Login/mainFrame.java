@@ -35,7 +35,7 @@ public class mainFrame extends javax.swing.JFrame {
         firstnameTextField.setVisible(false);
         jLabel1.setBounds(20,30,50,50);
         
-        jLabel1.setIcon(new ImageIcon ("../generic-user-purple.png"));
+        jLabel1.setIcon(new ImageIcon ("../generic-user-purple.PNG"));
 
         
     }
@@ -63,6 +63,7 @@ public class mainFrame extends javax.swing.JFrame {
         firstnameTextField = new javax.swing.JTextField();
         lastnameTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(640, 480));
@@ -110,12 +111,23 @@ public class mainFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("?");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exitButton)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -179,12 +191,14 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SignInButton)
                     .addComponent(createAccButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(firstnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lastnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
-                .addComponent(exitButton)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exitButton)
+                    .addComponent(jLabel2))
                 .addContainerGap())
         );
 
@@ -290,6 +304,13 @@ public class mainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_createAccButtonActionPerformed
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        loginHelp Frame = new loginHelp();
+        Frame.setVisible(true);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -331,6 +352,7 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JButton exitButton;
     private javax.swing.JTextField firstnameTextField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField lastnameTextField;
     private javax.swing.JLabel passwordLabel;
